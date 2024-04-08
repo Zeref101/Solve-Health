@@ -17,6 +17,20 @@ export default {
         lightTurquoise: "#87EED9",
         riverBed: "#41515B",
       },
+      keyframes: {
+        fadeOut: {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0", width: "0" },
+          "100%": { opacity: "1", width: "100%" },
+        },
+      },
+      animation: {
+        fadeOut: "fadeOut 0.5s ease 1s 1 both",
+        fadeIn: "fadeIn 1s ease 2s 1 both",
+      },
     },
   },
   plugins: [],
