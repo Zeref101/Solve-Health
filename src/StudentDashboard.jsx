@@ -31,7 +31,7 @@ export default function StudentDashboard() {
             </div>
           </div>
         </div>
-        <div className="search  mx-6">
+        <div className="search  mx-6 shadow-custom rounded-3xl">
           <div className="search-bar">
             <input
               type="text"
@@ -45,21 +45,21 @@ export default function StudentDashboard() {
             <h1 className="text-xl font-bold">Functionality</h1>
             <h1 className="">See All</h1>
           </div>
-          <div className="list flex gap-2 justify-between">
+          <div className="list flex gap-2 justify-between overflow-x-scroll">
             <div className="flex flex-col justify-center items-center">
-              <div className="h-16 bg-[#172935] hover:bg-[#20E9C1] rounded-2xl w-16"></div>
+              <div className="h-16 bg-[#172935] hover:bg-[#20E9C1] duration-150 shadow-custom rounded-2xl w-16"></div>
               <span className="text-sm">Activity</span>
             </div>
             <div className="flex flex-col justify-center items-center">
-              <div className="h-16 bg-[#172935] hover:bg-[#20E9C1] rounded-2xl w-16"></div>
+              <div className="h-16 bg-[#172935] hover:bg-[#20E9C1] shadow-custom rounded-2xl w-16"></div>
               <span className="text-sm">Activity</span>
             </div>
             <div className="flex flex-col justify-center items-center">
-              <div className="h-16 bg-[#172935] hover:bg-[#20E9C1] rounded-2xl w-16"></div>
+              <div className="h-16 bg-[#172935] hover:bg-[#20E9C1] shadow-custom rounded-2xl w-16"></div>
               <span className="text-sm">Activity</span>
             </div>
             <div className="flex flex-col justify-center items-center">
-              <div className="h-16 bg-[#172935] hover:bg-[#20E9C1] rounded-2xl w-16"></div>
+              <div className="h-16 bg-[#172935] hover:bg-[#20E9C1] shadow-custom rounded-2xl w-16"></div>
               <span className="text-sm">Activity</span>
             </div>
           </div>
@@ -69,9 +69,9 @@ export default function StudentDashboard() {
             <h1 className="text-xl font-bold">Doctors</h1>
             <h1 className="">See All</h1>
           </div>
-          <div className="list flex gap-10 justify-between overflow-x-scroll">
+          <div className="list py-4 px-2 flex gap-10 justify-between overflow-x-scroll">
             <div className="flex flex-col justify-center items-center">
-              <div className="flex flex-col justify-center items-center h-36 bg-[#172935] hover:bg-[#20E9C1] rounded-2xl w-24">
+              <div className="flex flex-col justify-center items-center h-36 bg-[#172935] hover:scale-105 duration-150 ease-in-out rounded-2xl shadow-custom w-24">
                 <div className="h-20 w-20 rounded-full border-4 border-[#87EED9]"></div>
                 <div className="relative -top-2 overflow-hidden w-16 px-2 flex justify-center h-4 object-contain bg-[#87EED9] rounded-3xl">
                   <img
@@ -85,7 +85,7 @@ export default function StudentDashboard() {
               </div>
             </div>
             <div className="flex flex-col justify-center items-center">
-              <div className="flex flex-col justify-center items-center h-36 bg-[#172935] hover:bg-[#20E9C1] rounded-2xl w-24">
+              <div className="flex flex-col justify-center items-center h-36 bg-[#172935] shadow-custom hover:scale-105 duration-150 ease-in-out rounded-2xl w-24">
                 <div className="h-20 w-20 rounded-full border-4 border-[#87EED9]"></div>
                 <div className="relative -top-2 overflow-hidden w-16 px-2 flex justify-center h-4 object-contain bg-[#87EED9] rounded-3xl">
                   <img
@@ -99,7 +99,7 @@ export default function StudentDashboard() {
               </div>
             </div>
             <div className="flex flex-col justify-center items-center">
-              <div className="flex flex-col justify-center items-center h-36 bg-[#172935] hover:bg-[#20E9C1] rounded-2xl w-24">
+              <div className="flex flex-col justify-center items-center h-36 bg-[#172935] shadow-custom hover:scale-105 duration-150 ease-in-out rounded-2xl w-24">
                 <div className="h-20 w-20 rounded-full border-4 border-[#87EED9]"></div>
                 <div className="relative -top-2 overflow-hidden w-16 px-2 flex justify-center h-4 object-contain bg-[#87EED9] rounded-3xl">
                   <img
@@ -113,7 +113,7 @@ export default function StudentDashboard() {
               </div>
             </div>
             <div className="flex flex-col justify-center items-center">
-              <div className="flex flex-col justify-center items-center h-36 bg-[#172935] hover:bg-[#20E9C1] rounded-2xl w-24">
+              <div className="flex flex-col justify-center items-center h-36 bg-[#172935] shadow-custom hover:scale-105 duration-150 ease-in-out rounded-2xl w-24">
                 <div className="h-20 w-20 rounded-full border-4 border-[#87EED9]"></div>
                 <div className="relative -top-2 overflow-hidden w-16 px-2 flex justify-center h-4 object-contain bg-[#87EED9] rounded-3xl">
                   <img
