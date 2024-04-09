@@ -17,7 +17,6 @@ export default {
         custom: "0 3px 5px 0 rgba(0, 0, 0, 0.8)",
         'inner-md': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
         'inner-lg': 'inset 0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-,
         button: "3.8px 3.8px 0px 0px #20E9C1"
       },
       dropShadow:{
