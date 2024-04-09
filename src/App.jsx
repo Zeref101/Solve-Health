@@ -8,6 +8,7 @@ import StudentLayout from "./_root/student/StudentLayout";
 import HostelOfficeLayout from "./_root/hostel_office/HostelOfficeLayout";
 import Login from "./_auth/Login.jsx";
 import DoctorDashboard from "./doctor_components/DoctorDashboard";
+import PrescriptionDetailsPage from "./_root/student/pages/PrescriptionDetailsPage.jsx";
 
 export default function App() {
   return (
@@ -21,6 +22,10 @@ export default function App() {
         <Route
           path="/student/prescription-history"
           element={<PrescriptionHistory />}
+        />
+        <Route
+          path="/student/:prescriptionId"
+          element={<PrescriptionDetailsPage />}
         />
         <Route path="/student/Doctor-details" element={<DoctorDetails />} />
       </Route>
