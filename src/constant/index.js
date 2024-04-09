@@ -16,3 +16,5 @@ export const dashboardInformation = [
         label: "Settings"
     }
 ]
+
+export const quote = "Being a doctor is not just about treating illnesses, it's about inspiring hope, instilling courage, and healing hearts."
