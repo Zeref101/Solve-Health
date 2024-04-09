@@ -25,6 +25,7 @@ export default {
       colors: {
         backgroundColor: "#0A171E",
         aquaMarine: "#20E9C1",
+        aquaMarineB: "#20E9C1d5",
         dark: "#172935",
         lightTurquoise: "#87EED9",
         riverBed: "#41515B",
