@@ -43,7 +43,7 @@ export default function AddPrescription() {
       medicines: medicines,
     });
     e.preventDefault();
-      console.log(prescription, medicines);
+    console.log(prescription, medicines);
 
     setPrescription({
       name: "",
@@ -79,7 +79,9 @@ export default function AddPrescription() {
             <div className="main w-full flex gap-10 justify-between">
               <div className="left basis-2/3 w-full min-w-96 flex flex-col gap-4 text-xl font-bold">
                 <div className="flex">
-                  <div className="basis-1/2 w-full text-center">Patients's name : </div>
+                  <div className="basis-1/2 w-full text-center">
+                    Patients's name :{" "}
+                  </div>
                   <input
                     value={prescription.name}
                     onChange={(e) => {
@@ -94,7 +96,9 @@ export default function AddPrescription() {
                   ></input>
                 </div>
                 <div className="flex">
-                  <div className="basis-1/2 w-full text-center">Hostel Block : </div>
+                  <div className="basis-1/2 w-full text-center">
+                    Hostel Block :{" "}
+                  </div>
                   <input
                     value={prescription.block}
                     onChange={(e) => {
@@ -109,7 +113,9 @@ export default function AddPrescription() {
                   ></input>
                 </div>
                 <div className="flex">
-                  <div className="basis-1/2 w-full text-center">Room Number : </div>
+                  <div className="basis-1/2 w-full text-center">
+                    Room Number :{" "}
+                  </div>
                   <input
                     value={prescription.room}
                     onChange={(e) => {
@@ -154,7 +160,9 @@ export default function AddPrescription() {
                   ></input>
                 </div>
                 <div className="flex">
-                  <div className="basis-1/2 w-full text-center">Severity : </div>
+                  <div className="basis-1/2 w-full text-center">
+                    Severity :{" "}
+                  </div>
                   <div className="w-full self-center h-full basis-1/2">
                     <Slider
                       progress
@@ -214,100 +222,104 @@ export default function AddPrescription() {
               Medicine Details
             </div>
             <div className="table border-4 w-full border-aquaMarineB">
-            <div className="h-full w-full">
-							<div className="flex text-white drop-shadow-custom w-full font-source-code-pro font-bold uppercase drop-shadow-black md:text-lg lg:text-2xl">
-								<div className="custom-scrollbar w-1/5 basis-1/12 border-2 border-l-0 overflow-hidden border-aquaMarineB whitespace-nowrap py-4 text-center">
-									S.No.
-								</div>
-								<div className="custom-scrollbar w-3/5 basis-4/12 border-2 border-l-0 overflow-hidden border-aquaMarineB whitespace-nowrap py-4 text-center">
-									Medicine
-								</div>
-								<div className="custom-scrollbar w-1/5 basis-3/12 border-2 border-l-0 overflow-hidden border-aquaMarineB whitespace-nowrap py-4 text-center">
-									Dosage
-								</div>
-                <div className="custom-scrollbar w-1/5 basis-6/12 border-2 border-l-0 overflow-hidden border-aquaMarineB whitespace-nowrap py-4 text-center">
-									Remarks
-								</div>
-							</div>
-              <div className="tab">
-                {medicines.map((medicine, index) => (
-                  <div className="flex w-full" key={index}>
-                    <div className="custom-scrollbar w-1/5 basis-1/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center">
-                      {index + 1}
-                    </div>
-                    <input
-                      value={medicine.medicineName}
-                      onChange={(e) => {
-                        setMedicines(
-                          medicines.map((med, i) => {
-                            if (i === index) {
-                              return {
-                                ...med,
-                                medicineName: e.target.value,
-                              };
-                            }
-                            return med;
-                          })
-                        );
-                        setPrescription({
-                          ...prescription,
-                          medicines: medicines,
-                        });
-                        medicines;
-                      }}
-                      className="custom-scrollbar w-3/5 basis-4/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center"
-                      type="text"
-                    ></input>
-                    <input
-                      value={medicine.dosage}
-                      onChange={(e) => {
-                        setMedicines(
-                          medicines.map((med, i) => {
-                            if (i === index) {
-                              return {
-                                ...med,
-                                dosage: e.target.value,
-                              };
-                            }
-                            return med;
-                          })
-                        );
-                        setPrescription({
-                          ...prescription,
-                          medicines: medicines,
-                        });
-                        medicines;
-                      }}
-                      className="custom-scrollbar w-1/5 basis-3/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center"
-                      type="text"
-                    ></input>
-                    <input
-                      value={medicine.remarks}
-                      onChange={(e) => {
-                        setMedicines(
-                          medicines.map((med, i) => {
-                            if (i === index) {
-                              return {
-                                ...med,
-                                remarks: e.target.value,
-                              };
-                            }
-                            return med;
-                          })
-                        );
-                        setPrescription({
-                          ...prescription,
-                          medicines: medicines,
-                        });
-                        medicines;
-                      }}
-                      className="custom-scrollbar w-1/5 basis-6/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center"
-                      type="text"
-                    ></input>
+              <div className="h-full w-full">
+                <div className="flex text-white drop-shadow-custom w-full font-source-code-pro font-bold uppercase drop-shadow-black md:text-lg lg:text-2xl">
+                  <div className="custom-scrollbar w-1/5 basis-1/12 border-2 border-l-0 overflow-hidden border-aquaMarineB whitespace-nowrap py-4 text-center">
+                    S.No.
                   </div>
-                ))}
+                  <div className="custom-scrollbar w-3/5 basis-4/12 border-2 border-l-0 overflow-hidden border-aquaMarineB whitespace-nowrap py-4 text-center">
+                    Medicine
+                  </div>
+                  <div className="custom-scrollbar w-1/5 basis-3/12 border-2 border-l-0 overflow-hidden border-aquaMarineB whitespace-nowrap py-4 text-center">
+                    Dosage
+                  </div>
+                  <div className="custom-scrollbar w-1/5 basis-6/12 border-2 border-l-0 overflow-hidden border-aquaMarineB whitespace-nowrap py-4 text-center">
+                    Remarks
+                  </div>
+                </div>
+                <div className="tab">
+                  {medicines.map((medicine, index) => (
+                    <div className="flex w-full" key={index}>
+                      <div className="custom-scrollbar w-1/5 basis-1/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center">
+                        {index + 1}
+                      </div>
+                      <input
+                        value={medicine.medicineName}
+                        onChange={(e) => {
+                          setMedicines(
+                            medicines.map((med, i) => {
+                              if (i === index) {
+                                return {
+                                  ...med,
+                                  medicineName: e.target.value,
+                                };
+                              }
+                              return med;
+                            })
+                          );
+                          setPrescription({
+                            ...prescription,
+                            medicines: medicines,
+                          });
+                          medicines;
+                        }}
+                        className="custom-scrollbar w-3/5 basis-4/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center"
+                        type="text"
+                      ></input>
+                      <input
+                        value={medicine.dosage}
+                        onChange={(e) => {
+                          setMedicines(
+                            medicines.map((med, i) => {
+                              if (i === index) {
+                                return {
+                                  ...med,
+                                  dosage: e.target.value,
+                                };
+                              }
+                              return med;
+                            })
+                          );
+                          setPrescription({
+                            ...prescription,
+                            medicines: medicines,
+                          });
+                          medicines;
+                        }}
+                        className="custom-scrollbar w-1/5 basis-3/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center"
+                        type="text"
+                      ></input>
+                      <input
+                        value={medicine.remarks}
+                        onChange={(e) => {
+                          setMedicines(
+                            medicines.map((med, i) => {
+                              if (i === index) {
+                                return {
+                                  ...med,
+                                  remarks: e.target.value,
+                                };
+                              }
+                              return med;
+                            })
+                          );
+                          setPrescription({
+                            ...prescription,
+                            medicines: medicines,
+                          });
+                          medicines;
+                        }}
+                        className="custom-scrollbar w-1/5 basis-6/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center"
+                        type="text"
+                      ></input>
+                    </div>
+                  ))}
+                </div>
               </div>
-						</div>
+            </div>
+            <div className="remarks flex justify-between w-full items-center gap-4">
+              <div className="whitespace-nowrap text-2xl font-extrabold">Additional Remarks :</div>
+              <textarea className="bg-backgroundColor rounded-3xl p-2 w-full" name="" id="" cols="30" rows="2"></textarea>
             </div>
           </div>
         </div>

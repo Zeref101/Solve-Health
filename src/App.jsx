@@ -10,6 +10,7 @@ import Login from "./_auth/Login.jsx";
 import DoctorDashboard from "./_root/doctor/DoctorDashboard.jsx";
 import AddPrescription from "./_root/doctor/AddPrescription.jsx";
 import PrescriptionDetailsPage from "./_root/student/pages/PrescriptionDetailsPage.jsx";
+import ViewPrescription from "./_root/doctor/ViewPrescription.jsx";
 
 export default function App() {
   return (
@@ -36,6 +37,7 @@ export default function App() {
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/add-prescription" element={<AddPrescription />} />
+      <Route path="/view-prescription" element={<ViewPrescription />} />
     </Routes>
 
   );
