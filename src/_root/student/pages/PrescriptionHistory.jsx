@@ -58,7 +58,7 @@ export default function PrescriptionHistory() {
                     alt="Doctor"
                     className="w-16 h-16 rounded-full border-2 border-gray-300 self-center shadow-custom"
                   />
-                  <h2 className="text-lg text-black font-bold">
+                  <h2 className="text-lg text-white font-bold">
                     {prescription.name}
                   </h2>
                 </div>

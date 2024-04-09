@@ -8,30 +8,41 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { useParams } from "react-router";
+import { useEffect } from "react";
+import axios from "axios";
+import { URL_ORIGIN } from "../../../constant";
 
 export default function DoctorDetails() {
-  const [details, setDetails] = useState({
-    img: "https://s3-alpha-sig.figma.com/img/fb11/a9f5/77f63aabaac5cd02a9af6492c086a768?Expires=1713744000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=p2EYeUz~fRSTDHeaa73E8B4q~Y4S~fOdc1datMvxuWAPS~~Z9qtfTLHp32FY16ngSJhVOKrH2V2~5T3XvvTMsbPLrhYcNkGb68zR7keuTcjghcFtLIIKutP1BpSnqUfFW98xnHdef52mc-gXFG8ZqFNHTvRvUrg3a9bmUKHszRNJnHcthdgSPNVazigZJUZR0A2y-EKH8iRnoKRlX~GrP-MlMzPbdYHLMNQ1GWPWq0Hud~PZqWUpP1G-CgAGrk04LErYkd5e-5LeaKXraXx6LloiqR5Rk7vamKPf2ntKVjREJ6yUTUzZeALgn77y8bNWM~QveW7aPP9IVIaz9zq9gw__",
-    name: "Dr. Om Aditya",
-    speciality: "Nothing Special",
-    details:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error nisi accusantium qui consequatur. Deserunt, esse incidunt cumque dolores optio iste.",
-  });
-
+  const { doctorId } = useParams();
+  const [details, setDetails] = useState({});
   const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    console.log(doctorId);
+    axios
+      .get(`${URL_ORIGIN}/doctor/getDetails?doctor_id=${doctorId}`)
+      .then((response) => {
+        setDetails(response.data);
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
+  }, [doctorId]);
+
   return (
     <div className="min-h-screen bg-backgroundColor w-full text-white flex flex-col">
       <div className="header w-full flex flex-col justify-center items-center rounded-b-xl overflow-hidden shadow-custom bg-riverBed py-4 gap-4">
         <div>
           <img
             className="w-32 h-32 rounded-full border-2 border-gray-300 self-center shadow-custom"
-            src={details.img}
-            alt=""
+            src={`/src/assets/doctor-male-2.png`}
+            alt="doc"
           />
         </div>
         <div className="details flex flex-col items-center text-black justify-center">
           <h1 className="text-2xl font-bold">{details.name}</h1>
-          <h1 className="text-lg">{details.speciality}</h1>
+          <h1 className="text-lg">{details.specialist}</h1>
         </div>
         <div className="nav flex gap-10">
           <div className="h-14 w-14 rounded-2xl bg-backgroundColor flex justify-center items-center">
@@ -107,7 +118,7 @@ export default function DoctorDetails() {
             }}
           >
             <SwiperSlide>{details.details}</SwiperSlide>
-            <SwiperSlide>{details.details}1224</SwiperSlide>
+            <SwiperSlide>{details.details}</SwiperSlide>
             <SwiperSlide>{details.details}</SwiperSlide>
             <SwiperSlide>{details.details}</SwiperSlide>
           </Swiper>
