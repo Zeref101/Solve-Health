@@ -18,7 +18,6 @@ export default {
         'inner-md': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
         'inner-lg': 'inset 0 10px 15px -3px rgba(0, 0, 0, 0.1)',
 
-        custom1: "-2px 0px 5px 0 rgba(0, 0, 0, 0.5)"
       },
       colors: {
         backgroundColor: "#0A171E",
@@ -27,8 +26,7 @@ export default {
         lightTurquoise: "#87EED9",
         riverBed: "#41515B",
         offwhite: "#FFF8F8",
-        dashboardText: "#CBD0CF",
-        snow: "#FDF9F9",
+        dashboardText: "#CBD0CF"
       },
       keyframes: {
         fadeOut: {
@@ -45,12 +43,6 @@ export default {
         fadeIn: "fadeIn 1s ease 2s 1 both",
       },
     },
-
   },
-  variants: {
-    extend: {
-      textShadow: ['responsive'], // Add other variants if needed
-    },
-  },
-  plugins: ['tailwindcss-textshadow'],
+  plugins: [],
 };
