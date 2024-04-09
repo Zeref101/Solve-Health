@@ -5,6 +5,28 @@
 .shadowforLogin {
   text-shadow: 1px 1px 5px #00000069;
 }
+.textShadow {
+  text-shadow: 1px 2px 15px #00000069;
+}
 .prescriptionDetail {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.prescription-header {
+  border-bottom: 2px solid black;
+}
+.prescription-footer {
+  border-top: 2px solid black;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+}
+th {
+  background-color: #f3f3f3;
 }

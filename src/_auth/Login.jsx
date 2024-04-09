@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
@@ -27,7 +27,8 @@ const customStyles = {
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
-  const { details, setDetails, setIsAuthenticated } = useUserContext();
+  const { details, setDetails, setIsAuthenticated, IsAuthenticated } =
+    useUserContext();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -79,8 +80,6 @@ const Login = () => {
         setDetails(response.data);
         setIsAuthenticated(true);
 
-        // If login is successful, navigate to the appropriate dashboard
-
         navigate(dashboard);
 
         toast.success("Login successful!");
@@ -91,6 +90,12 @@ const Login = () => {
       }
     }
   };
+
+  useEffect(() => {
+    if (selectedOption) {
+      localStorage.setItem("selectedOption", JSON.stringify(selectedOption));
+    }
+  }, [selectedOption]);
   return (
     <div className="max-w-md relative flex flex-col p-4 rounded-md text-black bg-white">
       <div className="text-2xl font-bold mb-2 text-[#1e0e4b] text-center">

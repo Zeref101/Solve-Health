@@ -1,0 +1,8 @@
+{
+  "appId": "com.DormDocCrusaders.myapp",
+  "appName": "DormDocCrusaders",
+  "webDir": "build",
+  "server": {
+    "androidScheme": "https"
+  }
+}

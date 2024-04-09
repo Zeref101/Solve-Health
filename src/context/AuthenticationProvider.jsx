@@ -1,24 +1,46 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useEffect, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 export const AuthenticationContext = createContext();
 
 const AuthenticationProvider = ({ children }) => {
+  const navigate = useNavigate();
+  const isFirstRender = useRef(true);
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [details, setDetails] = useState(null);
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedDetails = localStorage.getItem("details");
+    if (storedDetails) {
+      setDetails(JSON.parse(storedDetails));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("details", JSON.stringify(details));
+  }, [details]);
 
   useEffect(() => {
     const jwtCookie = Cookies.get("jwt");
 
-    if (jwtCookie) {
+    if (jwtCookie && details) {
       setIsAuthenticated(true);
+      if (isFirstRender.current) {
+        if (details.specialist) {
+          navigate("/doctor/dashboard");
+        } else if (details.registration_number) {
+          navigate("/student/dashboard");
+        }
+      }
     } else {
       setIsAuthenticated(false);
       navigate("/login");
     }
-  }, [navigate]);
+
+    isFirstRender.current = false;
+  }, [navigate, details]);
 
   return (
     <AuthenticationContext.Provider
@@ -29,7 +51,6 @@ const AuthenticationProvider = ({ children }) => {
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useUserContext = () => useContext(AuthenticationContext);
 
 export default AuthenticationProvider;

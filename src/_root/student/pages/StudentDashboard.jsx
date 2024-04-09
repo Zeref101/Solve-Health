@@ -1,41 +1,41 @@
+import { NavLink } from "react-router-dom";
+import { getFieldFromDetails } from "../../../util";
+import yodaimage from "../../../assets/yoda.png";
+
 export default function StudentDashboard() {
+  const details = JSON.parse(localStorage.getItem("details"));
+
   return (
     <div>
       <div className="py-4 min-h-screen bg-backgroundColor w-full text-white flex flex-col gap-4">
         <div className="flex justify-between items-center p-4">
           <div className="logo flex flex-col justify-center items-center">
             <h1 className=" self-start">Hello,</h1>
-            <h1>Emir Husain</h1>
+            <h1>{details.name}</h1>
           </div>
           <div className="icon">
             <div className="bg-black border-2 border-gray-300 rounded-full w-14 h-14"></div>
           </div>
         </div>
-        <div className="quote h-40 bg-riverBed mx-6 rounded-2xl flex">
-          <div className="w-full basis-1/2">
-            <img src="" alt="" />
-          </div>
+        <div className="quote h-40 bg-riverBed mx-6 rounded-2xl flex justify-center items-center">
           <div className="flex flex-col m-2 my-4 gap-2 basis-1/2 w-full">
-            <div className="text-center text-lg font-bold">
+            <img src={yodaimage} alt="yoda" />
+            <div className="text-center text-lg font-bold textShadow">
               How do you feel?
             </div>
-            <div className="text-center text-sm">
+            <div className="text-center text-sm font-semibold">
               I am feeling great right now
-            </div>
-            <div>
-              <button className="h-full w-full bg-aquaMarine rounded-xl text-black py-2 text-lg font-bold shadow-custom">
-                Get Started
-              </button>
             </div>
           </div>
         </div>
         <div className="search  mx-6 shadow-custom rounded-3xl">
           <div className="search-bar">
-            <input
-              type="text"
-              className="w-full h-14 bg-contain bg-no-repeat bg-right bg-dark border-2 bg-search border-dark placeholder:text-white placeholder:font-bold rounded-3xl p-4 text-white"
-              placeholder="Search"
-            />
+            <div className="w-full h-14 bg-contain bg-no-repeat font-semibold flex justify-center items-center bg-right bg-dark border-2 bg-search border-dark rounded-3xl p-4 text-white">
+              Current Queue <span className="mx-2">:</span>
+              <div className="w-[35px] h-[35px] rounded-full font-bold text-aquaMarine border-4 flex justify-center items-center border-[#20E9C1]">
+                15
+              </div>
+            </div>
           </div>
         </div>
         <div className="category flex flex-col mx-6 gap-4">
@@ -43,23 +43,25 @@ export default function StudentDashboard() {
             <h1 className="text-xl font-bold">Functionality</h1>
             <h1 className="">See All</h1>
           </div>
-          <div className="list flex gap-2 justify-between overflow-x-scroll">
-            <div className="flex flex-col justify-center items-center">
-              <div className="h-16 bg-dark hover:bg-aquaMarine duration-150 shadow-custom rounded-2xl w-16"></div>
-              <span className="text-sm">Activity</span>
-            </div>
-            <div className="flex flex-col justify-center items-center">
-              <div className="h-16 bg-dark hover:bg-aquaMarine shadow-custom rounded-2xl w-16"></div>
-              <span className="text-sm">Activity</span>
-            </div>
-            <div className="flex flex-col justify-center items-center">
-              <div className="h-16 bg-dark hover:bg-aquaMarine shadow-custom rounded-2xl w-16"></div>
-              <span className="text-sm">Activity</span>
-            </div>
-            <div className="flex flex-col justify-center items-center">
-              <div className="h-16 bg-dark hover:bg-aquaMarine shadow-custom rounded-2xl w-16"></div>
-              <span className="text-sm">Activity</span>
-            </div>
+          <div className="list flex gap-2 justify-start overflow-x-scroll">
+            <NavLink
+              to={`/student/ambulance`}
+              className="flex flex-col justify-center items-center"
+            >
+              <div className="h-16 bg-dark p-2 hover:bg-aquaMarine duration-150 shadow-custom rounded-2xl w-16">
+                <img src="/src/assets/ambulance.png" alt="ambulance" />
+              </div>
+              <span className="text-sm font-semibold">Ambulance</span>
+            </NavLink>
+            <NavLink
+              to={`/student/prescription-history`}
+              className="flex flex-col justify-center items-center"
+            >
+              <div className="h-16 p-2 bg-dark hover:bg-aquaMarine shadow-custom rounded-2xl w-16">
+                <img src="/src/assets/prescription101.png" alt="prescription" />
+              </div>
+              <span className="text-sm font-semibold">Prescription</span>
+            </NavLink>
           </div>
         </div>
         <div className="doctor flex flex-col mx-6 gap-4">
