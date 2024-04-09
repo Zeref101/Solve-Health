@@ -17,6 +17,8 @@ export default {
         dark: "#172935",
         lightTurquoise: "#87EED9",
         riverBed: "#41515B",
+        offwhite: "#FFF8F8",
+        dashboardText: "#CBD0CF"
       },
       keyframes: {
         fadeOut: {
