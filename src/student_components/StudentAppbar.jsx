@@ -3,7 +3,7 @@ import { appbarInformation } from "../constant";
 
 const StudentAppbar = () => {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 w-full p-4 bg-backgroundColor">
+    <nav className="sticky bottom-0 left-0 right-0 w-full p-4 bg-backgroundColor z-10">
       <div className="w-full flex gap-4 px-4 justify-between items-center">
         {appbarInformation.map((item) => {
           return (
