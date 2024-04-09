@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import DoctorSidebar from "./DoctorSidebar";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -50,6 +50,12 @@ export default function DoctorDashboard() {
                   alt=""
                 />
               </div>
+              <div>
+                <img
+                  src="https://s3-alpha-sig.figma.com/img/bbc1/a70f/8b9a2573f89f39f99d7dfeec7594f1ba?Expires=1713744000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ZPCAFP5tC8GQtEAwUUGTny8OzKHKrL7DdFtGgwrYbZN5YjtLZE2Zu4n~Exiqa892Gf-TAyc3AqnMEaoB~HywklirPEYkNGpLQtIAiKig8R5McbPR6Jcm~GVGCaYap2r2McqvzVli3MWNNiqPUXv8Tixo3ofoPlH83xMwfuOp38fETWb2VfK4FYy6xH0brT-v98zLNW1Zr-WHzl2ZS0KUJSpKJZ4uk-l6WOYpdETw-F2YWCYw9e3T5UYQmO4wO8gnVKLf~trpc6kVfKpPXshQ0dFrcIPsrSBeTnDqGhST~2lVo4x7Np9BGu91uFVkY9J8~Lc7TYXJ3VyGVKzOME9G3g__"
+                  alt=""
+                />
+              </div>
             </div>
             <div className="mid flex gap-4 justify-center items-center">
               <CircularProgressbar
@@ -82,6 +88,7 @@ export default function DoctorDashboard() {
                     // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
                     strokeLinecap: "round",
                     border: "20px solid black",
+                    border: "20px solid black",
                     // Rotate the trail
                     transform: "rotate(0turn)",
                     transformOrigin: "center center",
@@ -101,6 +108,9 @@ export default function DoctorDashboard() {
                 }}
               />
               <div className="font-bold text-2xl">medication advises given</div>
+            </div>
+            <div className="compare text-gray-500 self-center">
+              +2 this week
             </div>
             <div className="compare text-gray-500 self-center">
               +2 this week

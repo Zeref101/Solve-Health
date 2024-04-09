@@ -1,40 +1,35 @@
 import { createContext, useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export const AuthenticationContext = createContext();
 
-// eslint-disable-next-line react/prop-types
-export const AuthenticationProvider = ({ children }) => {
+const AuthenticationProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [details, setDetails] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const jwtCookie = getCookie("jwt");
+    const jwtCookie = Cookies.get("jwt");
 
     if (jwtCookie) {
       setIsAuthenticated(true);
     } else {
       setIsAuthenticated(false);
+      navigate("/login");
     }
-  }, []);
-
-  const getCookie = (name) => {
-    const cookies = document.cookie.split(";");
-    for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i].trim();
-      if (cookie.startsWith(name + "=")) {
-        return cookie.substring(name.length + 1, cookie.length);
-      }
-    }
-    return null;
-  };
+  }, [navigate]);
 
   return (
     <AuthenticationContext.Provider
-      value={{ isAuthenticated, setIsAuthenticated }}
+      value={{ isAuthenticated, setIsAuthenticated, details, setDetails }}
     >
       {children}
     </AuthenticationContext.Provider>
   );
 };
+
 // eslint-disable-next-line react-refresh/only-export-components
 export const useUserContext = () => useContext(AuthenticationContext);
+
 export default AuthenticationProvider;
