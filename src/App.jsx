@@ -18,6 +18,7 @@ export default function App() {
       <Route element={<DoctorLayout />}>
         <Route path="/doctor/dashbard" element={<DoctorDashboard />} />
         <Route path="/doctor/add-prescription" element={<AddPrescription />} />
+        <Route path="/view-prescription" element={<ViewPrescription />} />
       </Route>
       <Route element={<StudentLayout />}>
         <Route path="/student/dashboard" element={<StudentDashboard />} />
@@ -36,9 +37,6 @@ export default function App() {
         <Route path="/hostel" />
       </Route>
       <Route path="/login" element={<Login />} />
-      <Route path="/add-prescription" element={<AddPrescription />} />
-      <Route path="/view-prescription" element={<ViewPrescription />} />
     </Routes>
-
   );
 }
