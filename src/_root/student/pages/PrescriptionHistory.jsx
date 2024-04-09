@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function PrescriptionHistory() {
   const [prescriptions, setPrescriptions] = useState([
@@ -7,24 +8,28 @@ export default function PrescriptionHistory() {
       name: "Dr. Om Aditya",
       date: "22/3/2024",
       disease: "Fever",
+      prescriptionId: "1234",
     },
     {
       img: "https://s3-alpha-sig.figma.com/img/fb11/a9f5/77f63aabaac5cd02a9af6492c086a768?Expires=1713744000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=p2EYeUz~fRSTDHeaa73E8B4q~Y4S~fOdc1datMvxuWAPS~~Z9qtfTLHp32FY16ngSJhVOKrH2V2~5T3XvvTMsbPLrhYcNkGb68zR7keuTcjghcFtLIIKutP1BpSnqUfFW98xnHdef52mc-gXFG8ZqFNHTvRvUrg3a9bmUKHszRNJnHcthdgSPNVazigZJUZR0A2y-EKH8iRnoKRlX~GrP-MlMzPbdYHLMNQ1GWPWq0Hud~PZqWUpP1G-CgAGrk04LErYkd5e-5LeaKXraXx6LloiqR5Rk7vamKPf2ntKVjREJ6yUTUzZeALgn77y8bNWM~QveW7aPP9IVIaz9zq9gw__",
       name: "Dr. Om Aditya",
       date: "22/3/2024",
       disease: "Fever",
+      prescriptionId: "5678",
     },
     {
       img: "https://s3-alpha-sig.figma.com/img/fb11/a9f5/77f63aabaac5cd02a9af6492c086a768?Expires=1713744000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=p2EYeUz~fRSTDHeaa73E8B4q~Y4S~fOdc1datMvxuWAPS~~Z9qtfTLHp32FY16ngSJhVOKrH2V2~5T3XvvTMsbPLrhYcNkGb68zR7keuTcjghcFtLIIKutP1BpSnqUfFW98xnHdef52mc-gXFG8ZqFNHTvRvUrg3a9bmUKHszRNJnHcthdgSPNVazigZJUZR0A2y-EKH8iRnoKRlX~GrP-MlMzPbdYHLMNQ1GWPWq0Hud~PZqWUpP1G-CgAGrk04LErYkd5e-5LeaKXraXx6LloiqR5Rk7vamKPf2ntKVjREJ6yUTUzZeALgn77y8bNWM~QveW7aPP9IVIaz9zq9gw__",
       name: "Dr. Om Aditya",
       date: "22/3/2024",
       disease: "Fever",
+      prescriptionId: "9876",
     },
     {
       img: "https://s3-alpha-sig.figma.com/img/fb11/a9f5/77f63aabaac5cd02a9af6492c086a768?Expires=1713744000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=p2EYeUz~fRSTDHeaa73E8B4q~Y4S~fOdc1datMvxuWAPS~~Z9qtfTLHp32FY16ngSJhVOKrH2V2~5T3XvvTMsbPLrhYcNkGb68zR7keuTcjghcFtLIIKutP1BpSnqUfFW98xnHdef52mc-gXFG8ZqFNHTvRvUrg3a9bmUKHszRNJnHcthdgSPNVazigZJUZR0A2y-EKH8iRnoKRlX~GrP-MlMzPbdYHLMNQ1GWPWq0Hud~PZqWUpP1G-CgAGrk04LErYkd5e-5LeaKXraXx6LloiqR5Rk7vamKPf2ntKVjREJ6yUTUzZeALgn77y8bNWM~QveW7aPP9IVIaz9zq9gw__",
       name: "Dr. Om Aditya",
       date: "22/3/2024",
       disease: "Fever",
+      prescriptionId: "5432",
     },
   ]);
   return (
@@ -61,9 +66,12 @@ export default function PrescriptionHistory() {
                   <p className="text-white font-bold">{prescription.disease}</p>
                   <p className="text-white">{prescription.date}</p>
                   <div>
-                    <button className="h-full w-full bg-aquaMarine rounded-xl text-black p-1 px-2 text-sm font-bold shadow-custom">
+                    <NavLink
+                      to={`/student/${prescription.prescriptionId}`}
+                      className="h-full w-full bg-aquaMarine rounded-xl text-black p-1 px-2 text-sm font-bold shadow-custom"
+                    >
                       View Details
-                    </button>
+                    </NavLink>
                   </div>
                 </div>
               </div>
