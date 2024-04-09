@@ -36,7 +36,7 @@ export default function Ambulance() {
         We are here to help you out
       </div>
       <div
-        className={`search h-20 flex flex-col items-center justify-center relative mx-6 rounded-3xl`}
+        className={`search h-20 flex flex-col items-center justify-center relative mx-16 rounded-3xl`}
       >
         <div
           className={`search-bar w-full rounded-3xl absolute ${
@@ -78,7 +78,7 @@ export default function Ambulance() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col relative h-14 mx-6 justify-center items-center">
+      <div className="flex flex-col relative h-14 mx-16 justify-center items-center">
         <div className="slider flex justify-center absolute">
           <label className="relative inline-flex items-center cursor-pointer">
             <input type="checkbox" value="" className="sr-only peer" />
@@ -95,12 +95,16 @@ export default function Ambulance() {
             </div>
           </label>
         </div>
-        <div className={`status overflow-hidden flex h-14 text-white justify-between items-center rounded-3xl pl-4 absolute bg-gray-600 ${
+        <div
+          className={`status overflow-hidden flex h-14 text-white justify-between items-center rounded-3xl pl-4 absolute bg-gray-600 ${
             checked ? "animate-fadeIn" : "opacity-0 w-0"
-          }`}>
-            <span>Status</span>
-            <div className="w-1/2 h-full rounded-3xl flex justify-center items-center bg-red-600">Pending</div>
+          }`}
+        >
+          <span>Status</span>
+          <div className="w-2/3 shadow-custom1 text-black uppercase font-bold  h-full rounded-3xl flex justify-center items-center bg-rose-400">
+            Pending
           </div>
+        </div>
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ export default {
       },
       boxShadow: {
         custom: "0 2px 5px 0 rgba(0, 0, 0, 0.5)",
+        custom1: "-2px 0px 5px 0 rgba(0, 0, 0, 0.5)"
       },
       colors: {
         backgroundColor: "#0A171E",
