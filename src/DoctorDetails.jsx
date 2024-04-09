@@ -1,13 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 // import Swiper core and required modules
-import {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-} from "swiper/modules";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -23,9 +18,7 @@ export default function DoctorDetails() {
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error nisi accusantium qui consequatur. Deserunt, esse incidunt cumque dolores optio iste.",
   });
 
-  const [reviews, setReviews] = useState([
-    
-  ])
+  const [reviews, setReviews] = useState([]);
   return (
     <div className="min-h-screen bg-backgroundColor w-full text-white flex flex-col">
       <div className="header w-full flex flex-col justify-center items-center rounded-b-xl overflow-hidden shadow-custom bg-riverBed py-4 gap-4">
@@ -84,10 +77,34 @@ export default function DoctorDetails() {
             spaceBetween={50}
             slidesPerView={1}
             navigation
-            pagination={{ clickable: true }}
+            pagination={{
+              clickable: true,
+            }}
             scrollbar={{ draggable: true }}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={(swiper) => {
+              if (swiper.isBeginning) {
+                swiper.navigation.prevEl.style.display = "none";
+              } else {
+                swiper.navigation.prevEl.style.display = "none";
+              }
+
+              if (swiper.isEnd) {
+                swiper.navigation.nextEl.style.display = "none";
+                swiper.navigation.nextEl.style.display = "none";
+              } else {
+                swiper.navigation.nextEl.style.display = "none";
+              }
+            }}
+            onSwiper={(swiper) => {
+              if (swiper.isBeginning) {
+                swiper.navigation.prevEl.style.display = "none";
+                swiper.navigation.nextEl.style.display = "none";
+              }
+
+              if (swiper.isEnd) {
+                swiper.navigation.nextEl.style.display = "none";
+              }
+            }}
           >
             <SwiperSlide>{details.details}</SwiperSlide>
             <SwiperSlide>{details.details}1224</SwiperSlide>
