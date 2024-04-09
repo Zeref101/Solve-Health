@@ -3,19 +3,19 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-
       textShadow: {
-        'default': '0 2px 5px rgba(0, 0, 0, 0.5)',
+        default: "0 2px 5px rgba(0, 0, 0, 0.5)",
       },
       backgroundImage: {
+        search:"url('/src/assets/search.png')",
         quote:
-          "url('https://s3-alpha-sig.figma.com/img/c5e5/e24c/44e231209353212bbefc2adf039d6916?Expires=1713744000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hiulLpvHaCUbYztX210j51GyG-dFYg97VpdO0OsEQ1JmrhOgFj9uD-L8-KhTRK1xgHiDZ8OG9z2HnP4--aItD6btd1yeej9zrWMFH5pw5K6v1t5BVcNmXAqa3Y0ZGMixLbDykaJCaB20sc0uUKkAjuy61qsS4pzMeW35YeqUZl1Hpr7r4DQ~1XzFhFhoikom9uPUCTvoJ6G9eB4FVBTr~TESEngScrkfjkvooLmDD~OLt1fkbg6~qGE7zh2OtJ-miYfJcC5GR~u582OwRH3ylYfmCoP6KO0uN8eFbHOYc7YJXI0yEn6nx10JhvfXhPDbcSWKRCUflMQ4akx2jj0MrQ__')"
+          "url('https://s3-alpha-sig.figma.com/img/c5e5/e24c/44e231209353212bbefc2adf039d6916?Expires=1713744000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hiulLpvHaCUbYztX210j51GyG-dFYg97VpdO0OsEQ1JmrhOgFj9uD-L8-KhTRK1xgHiDZ8OG9z2HnP4--aItD6btd1yeej9zrWMFH5pw5K6v1t5BVcNmXAqa3Y0ZGMixLbDykaJCaB20sc0uUKkAjuy61qsS4pzMeW35YeqUZl1Hpr7r4DQ~1XzFhFhoikom9uPUCTvoJ6G9eB4FVBTr~TESEngScrkfjkvooLmDD~OLt1fkbg6~qGE7zh2OtJ-miYfJcC5GR~u582OwRH3ylYfmCoP6KO0uN8eFbHOYc7YJXI0yEn6nx10JhvfXhPDbcSWKRCUflMQ4akx2jj0MrQ__')",
       },
       boxShadow: {
         custom: "0 3px 5px 0 rgba(0, 0, 0, 0.8)",
-        'inner-md': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
-        'inner-lg': 'inset 0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-        button: "3.8px 3.8px 0px 0px #20E9C1"
+        "inner-md": "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
+        "inner-lg": "inset 0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+        button: "3.8px 3.8px 0px 0px #20E9C1",
       },
       dropShadow: {
         custom: "0px 4px 2px rgba(0, 0, 0, 0.75)",
@@ -28,7 +28,8 @@ export default {
         lightTurquoise: "#87EED9",
         riverBed: "#41515B",
         offwhite: "#FFF8F8",
-        dashboardText: "#CBD0CF"
+        dashboardText: "#CBD0CF",
+        blackish: "#202222",
       },
       keyframes: {
         fadeOut: {
@@ -46,7 +47,7 @@ export default {
       },
       linearGradientColors: {
         // Define your custom gradients here
-        'custom-gradient': ['to right', 'red', 'yellow', 'green'],
+        "custom-gradient": ["to right", "red", "yellow", "green"],
         // You can add more gradients as needed
       },
     },

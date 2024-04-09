@@ -11,6 +11,8 @@ import DoctorDashboard from "./_root/doctor/DoctorDashboard.jsx";
 import AddPrescription from "./_root/doctor/AddPrescription.jsx";
 import PrescriptionDetailsPage from "./_root/student/pages/PrescriptionDetailsPage.jsx";
 import ViewPrescription from "./_root/doctor/ViewPrescription.jsx";
+import HostelDashboard from "./_root/hostel_office/HostelDashboard.jsx";
+import Emergency from "./_root/hostel_office/Emergency.jsx";
 
 export default function App() {
   return (
@@ -18,7 +20,10 @@ export default function App() {
       <Route element={<DoctorLayout />}>
         <Route path="/doctor/dashbard" element={<DoctorDashboard />} />
         <Route path="/doctor/add-prescription" element={<AddPrescription />} />
-        <Route path="/view-prescription" element={<ViewPrescription />} />
+        <Route
+          path="/doctor/view-prescription"
+          element={<ViewPrescription />}
+        />
       </Route>
       <Route element={<StudentLayout />}>
         <Route path="/student/dashboard" element={<StudentDashboard />} />
@@ -34,9 +39,10 @@ export default function App() {
         <Route path="/student/Doctor-details" element={<DoctorDetails />} />
       </Route>
       <Route element={<HostelOfficeLayout />}>
-        <Route path="/hostel" />
+        <Route path="/hostel/dashboard" element={<HostelDashboard />} />
       </Route>
       <Route path="/login" element={<Login />} />
+      <Route path="/emergency" element={<Emergency />} />
     </Routes>
   );
 }

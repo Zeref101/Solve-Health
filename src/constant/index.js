@@ -17,6 +17,21 @@ export const dashboardInformation = [
     }
 ]
 
+export const wardenInformation = [
+    {
+        imgUrl: "src/assets/home2.png",
+        label: "Home"
+    },
+    {
+        imgUrl: "src/assets/prescription1.png",
+        label: "Emergency"
+    },
+    {
+        imgUrl: "src/assets/analytics.png",
+        label: "Analytics"
+    }
+]
+
 export const quote = "Being a doctor is not just about treating illnesses, it's about inspiring hope, instilling courage, and healing hearts."
 
 export const shifts = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
