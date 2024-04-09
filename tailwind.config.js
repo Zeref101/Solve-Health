@@ -45,6 +45,11 @@ export default {
         fadeOut: "fadeOut 0.5s ease 1s 1 both",
         fadeIn: "fadeIn 1s ease 2s 1 both",
       },
+      linearGradientColors: {
+        // Define your custom gradients here
+        'custom-gradient': ['to right', 'red', 'yellow', 'green'],
+        // You can add more gradients as needed
+      },
     },
   },
   plugins: [],

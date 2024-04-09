@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DoctorSidebar from "./DoctorSidebar";
+import DoctorSidebar from "../../doctor_components/DoctorSidebar";
 import add from "../assets/add.png";
 export default function Prescriptions() {
   const [prescriptions, setPrescriptions] = useState([

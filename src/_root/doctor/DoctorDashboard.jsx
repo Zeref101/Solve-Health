@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import DoctorSidebar from "./DoctorSidebar";
+import DoctorSidebar from "../../doctor_components/DoctorSidebar";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { quote, shifts, times } from "../constant";
-import minus from "../assets/minus 1.png";
+import { quote, shifts, times } from "../../constant";
+import minus from "../../assets/minus 1.png";
 
 export default function DoctorDashboard() {
   const [percentage, setPercentage] = useState(0);
@@ -87,8 +87,6 @@ export default function DoctorDashboard() {
                     stroke: "#172935",
                     // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
                     strokeLinecap: "round",
-                    border: "20px solid black",
-                    border: "20px solid black",
                     // Rotate the trail
                     transform: "rotate(0turn)",
                     transformOrigin: "center center",
@@ -187,7 +185,6 @@ export default function DoctorDashboard() {
                     stroke: "#172935",
                     // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
                     strokeLinecap: "round",
-                    border: "20px solid black",
                     // Rotate the trail
                     transform: "rotate(0turn)",
                     transformOrigin: "center center",

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DoctorSidebar from "./DoctorSidebar";
+import DoctorSidebar from "../../doctor_components/DoctorSidebar";
 import ReactSlider from "react-slider";
 import { Slider, RangeSlider } from "rsuite";
 import "rsuite/Slider/styles/index.css";
@@ -26,7 +26,7 @@ export default function AddPrescription() {
   });
   function handleSubmit(e) {
     e.preventDefault();
-    (prescription);
+    prescription;
     setPrescription({
       name: "",
       age: "",
@@ -47,19 +47,19 @@ export default function AddPrescription() {
           <div className="relative text-2xl font-extrabold shadow-button">
             <button
               onClick={handleSubmit}
-              className="relative active:top-1 w-full h-full border-4 border-aquaMarine p-3 active:left-1"
+              className="relative active:top-1 w-full h-full border-4 uppercase border-aquaMarine p-1 px-3 active:left-1"
             >
               Save
             </button>
           </div>
         </div>
         <div className="body bg-dark p-4 rounded-3xl flex flex-col justify-center items-center">
-          <div className="top gap-4 flex flex-col justify-center items-center">
+          <div className="top gap-4 w-full flex flex-col justify-center items-center">
             <div className="header w-full h-full text-2xl font-extrabold text-center">
               New Prescription
             </div>
-            <div className="main w-full">
-              <div className="left basis-1/2 w-full flex flex-col gap-4 text-xl font-bold">
+            <div className="main w-full flex gap-10 justify-between">
+              <div className="left basis-1/2 w-full min-w-96 flex flex-col gap-4 text-xl font-bold">
                 <div className="flex">
                   <div className="basis-1/2 w-full">Patients's name : </div>
                   <input
@@ -69,7 +69,7 @@ export default function AddPrescription() {
                         ...prescription,
                         name: e.target.value,
                       });
-                      (prescription);
+                      prescription;
                     }}
                     className="w-full basis-1/2 bg-backgroundColor rounded-3xl p-2"
                     type="text"
@@ -84,7 +84,7 @@ export default function AddPrescription() {
                         ...prescription,
                         block: e.target.value,
                       });
-                      (prescription);
+                      prescription;
                     }}
                     className="w-full basis-1/2 bg-backgroundColor rounded-3xl p-2"
                     type="text"
@@ -99,7 +99,7 @@ export default function AddPrescription() {
                         ...prescription,
                         room: e.target.value,
                       });
-                      (prescription);
+                      prescription;
                     }}
                     className="w-full basis-1/2 bg-backgroundColor rounded-3xl p-2"
                     type="text"
@@ -114,7 +114,7 @@ export default function AddPrescription() {
                         ...prescription,
                         disease: e.target.value,
                       });
-                      (prescription);
+                      prescription;
                     }}
                     className="w-full basis-1/2 bg-backgroundColor rounded-3xl p-2"
                     type="text"
@@ -129,7 +129,7 @@ export default function AddPrescription() {
                         ...prescription,
                         date: e.target.value,
                       });
-                      (prescription);
+                      prescription;
                     }}
                     className="w-full basis-1/2 bg-backgroundColor rounded-3xl p-2"
                     type="date"
@@ -146,13 +146,43 @@ export default function AddPrescription() {
                           ...prescription,
                           severity: value,
                         });
-                        (prescription);
+                        prescription;
                       }}
                     />
                   </div>
                 </div>
               </div>
-              <div className="right basis-1/2 w-full"></div>
+              <div className="right rounded-3xl flex flex-col gap-4 justify-center items-center basis-1/2 w-full bg-riverBed">
+                <div className="header rounded-3xl w-52 p-2 shadow-custom text-black text-2xl font-extrabold text-center bg-aquaMarine">
+                  Hospitalization
+                </div>
+                <div className="choices w-72 flex flex-col text-xl font-bold gap-2">
+                  <div className="flex gap-4 w-full justify-center">
+                    <input
+                      name="hospitalization"
+                      value="yes"
+                      id="yes"
+                      type="radio"
+                      className="bg-gradient-to-b from-blue-700 via-blue-500 to-blue-400 w-8 h-6 rounded-none appearance-none"
+                    />
+                    <label htmlFor="yes">
+                      Yes, the student requires hospitalization
+                    </label>
+                  </div>
+                  <div className="flex gap-4 w-full justify-center">
+                    <input
+                      name="hospitalization"
+                      value="no"
+                      id="no"
+                      type="radio"
+                      className="bg-red-600 w-8 h-6 rounded-none appearance-none border-2 border-"
+                    />
+                    <label htmlFor="no">
+                      No, there is no need for hospitalization
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="bottom flex flex-col justify-center items-center">
