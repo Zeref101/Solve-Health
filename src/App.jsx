@@ -7,13 +7,13 @@ import DoctorLayout from "./_root/doctor/DoctorLayout";
 import StudentLayout from "./_root/student/StudentLayout";
 import HostelOfficeLayout from "./_root/hostel_office/HostelOfficeLayout";
 import Login from "./_auth/forms/Login.jsx";
-import DoctorDashboard from './doctor_components/DoctorDashboard'
+import DoctorDashboard from "./doctor_components/DoctorDashboard";
 
 export default function App() {
   return (
     <Routes>
       <Route element={<DoctorLayout />}>
-        <Route path="/doctor/dashbard" element={<DoctorDashboard}/>
+        <Route path="/doctor/dashbard" element={<DoctorDashboard />} />
       </Route>
       <Route element={<StudentLayout />}>
         <Route path="/student/dashboard" element={<StudentDashboard />} />
