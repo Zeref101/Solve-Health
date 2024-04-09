@@ -24,6 +24,10 @@ export default function App() {
         <Route path="/student/dashboard" element={<StudentDashboard />} />
         <Route path="/student/ambulance" element={<Ambulance />} />
         <Route
+          path="/student/doctor/:doctorId"
+          element={<DoctorDetails />}
+        ></Route>
+        <Route
           path="/student/prescription-history"
           element={<PrescriptionHistory />}
         />

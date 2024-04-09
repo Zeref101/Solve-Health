@@ -29,7 +29,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const { details, setDetails, setIsAuthenticated, IsAuthenticated } =
     useUserContext();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -39,10 +38,12 @@ const Login = () => {
     { value: "Hostel Office", label: "Hostel Office" },
   ];
 
-  const [selectedOption, setSelectedOption] = useState(null); // Add this
+  const [selectedOption, setSelectedOption] = useState(
+    JSON.parse(localStorage.getItem("selectedOption")) || null
+  );
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     if (selectedOption) {
       let url;
       let dashboard;
@@ -63,7 +64,6 @@ const Login = () => {
           console.error("Unknown option selected");
           return;
       }
-
       setLoading(true);
       try {
         const response = await axios.post(
@@ -76,12 +76,9 @@ const Login = () => {
             withCredentials: true,
           }
         );
-
         setDetails(response.data);
         setIsAuthenticated(true);
-
         navigate(dashboard);
-
         toast.success("Login successful!");
       } catch (error) {
         toast.error("Login failed. Please try again.");
@@ -96,8 +93,9 @@ const Login = () => {
       localStorage.setItem("selectedOption", JSON.stringify(selectedOption));
     }
   }, [selectedOption]);
+
   return (
-    <div className="max-w-md relative flex flex-col p-4 rounded-md text-black bg-white">
+    <div className=" w-[20rem] mx-6 relative flex flex-col p-4 rounded-md mt-52  text-black bg-white">
       <div className="text-2xl font-bold mb-2 text-[#1e0e4b] text-center">
         Welcome back to <span className="text-[#7747ff]">App</span>
       </div>
