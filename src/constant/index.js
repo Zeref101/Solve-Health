@@ -32,11 +32,11 @@ export const appbarInformation = [
     },
     {
         imgUrl: "/src/assets/bell5.png",
-        navigateTo: "/student/dashboard"
+        navigateTo: "/student/prescription-history"
     },
     {
         imgUrl: "/src/assets/setting2.png",
-        navigateTo: "/student/dashboard"
+        navigateTo: "/student/Doctor-details"
     }
 ]
 
