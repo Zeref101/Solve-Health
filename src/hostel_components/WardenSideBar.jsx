@@ -19,7 +19,7 @@ const WardenSidebar = () => {
           </div>
         </div>
         <img
-          src="src/assets/divider.png"
+          src="/src/assets/divider.png"
           alt="divider"
           className=" w-[17rem] pt-4"
         />
@@ -39,13 +39,13 @@ const WardenSidebar = () => {
           })}
         </div>
         <img
-          src="src/assets/divider.png"
+          src="/src/assets/divider.png"
           alt="divider"
           className=" w-[17rem] pt-32"
         />
         <div className=" flex gap-2.5 pt-[4rem] p-4">
           <img
-            src="src/assets/user-logout2.png"
+            src="/src/assets/user-logout2.png"
             alt="logout"
             className="w-[25px]"
           />

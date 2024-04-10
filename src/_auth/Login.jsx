@@ -57,7 +57,7 @@ const Login = () => {
           dashboard = "/doctor/dashboard";
           break;
         case "Hostel Office":
-          url = `${URL_ORIGIN}/get-hostel`;
+          url = `${URL_ORIGIN}/hostel/login`;
           dashboard = "/hostel/dashboard";
           break;
         default:
