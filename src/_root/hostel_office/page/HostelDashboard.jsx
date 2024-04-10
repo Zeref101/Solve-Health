@@ -1,27 +1,30 @@
-import React, { useState } from "react";
-import WardenSidebar from "../../hostel_components/WardenSideBar";
+import React, { useState, useEffect } from "react";
+import WardenSidebar from "../../../hostel_components/WardenSideBar";
+import axios from "axios";
+import { URL_ORIGIN } from "../../../constant";
 export default function HostelDashboard() {
   const [selected, setSelected] = useState("A block");
   const [patients, setPatients] = useState([
-    {
-      name: "John Doe",
-      room: "A-101",
-      status: "Yes",
-      pres: "",
-    },
-    {
-      name: "John Doe",
-      room: "A-101",
-      status: "No",
-      pres: "",
-    },
-    {
-      name: "John Doe",
-      room: "A-101",
-      status: "Yes",
-      pres: "",
-    },
   ]);
+  useEffect(()=>{
+    function fetchData(){
+      axios.get(`${URL_ORIGIN}/health_center/getByBlock/?block=A`).then((res)=>{
+        setPatients(res.data);
+      })
+    }
+    fetchData();
+  },[])
+
+  function fetchByBlock(block){
+    axios.get(`${URL_ORIGIN}/health_center/getByBlock/?block=${block}`).then((res)=>{
+      setPatients(res.data);
+    })
+  }
+  function fetchByStatus(){
+    axios.get(`${URL_ORIGIN}/health_center/getByStatus/?status=yes`).then((res)=>{
+      setPatients(res.data);
+    })
+  }
   console.log(patients);
   return (
     <div className="min-h-screen bg-backgroundColor w-full text-white flex gap-10">
@@ -48,6 +51,7 @@ export default function HostelDashboard() {
                 htmlFor=""
                 onClick={() => {
                   setSelected("A block");
+                  fetchByBlock("A")
                   console.log("hi");
                 }}
                 className={`w-full border-2 border-gray-700 text-center ${
@@ -62,6 +66,7 @@ export default function HostelDashboard() {
                 htmlFor=""
                 onClick={() => {
                   setSelected("B block");
+                  fetchByBlock("B")
                   console.log("hi");
                 }}
                 className={`w-full border-2 border-gray-700 text-center ${
@@ -76,6 +81,7 @@ export default function HostelDashboard() {
                 htmlFor=""
                 onClick={() => {
                   setSelected("C block");
+                  fetchByBlock("C")
                   console.log("hi");
                 }}
                 className={`w-full border-2 border-gray-700 text-center ${
@@ -90,6 +96,7 @@ export default function HostelDashboard() {
                 htmlFor=""
                 onClick={() => {
                   setSelected("D block");
+                  fetchByBlock("D")
                   console.log("hi");
                 }}
                 className={`w-full border-2 border-gray-700 text-center ${
@@ -106,11 +113,11 @@ export default function HostelDashboard() {
             Filter By
           </div>
           <div className="flex justify-between mx-48 gap-10 text-aquaMarine font-bold">
-            <div className="w-full h-full bg-blackish text-center p-2 rounded-tl-full rounded-br-full shadow-custom drop-shadow-custom">
+            <div onClick={fetchByStatus} className="w-full h-full bg-blackish text-center p-2 rounded-tl-full rounded-br-full shadow-custom drop-shadow-custom">
               Hospitalised
             </div>
             <div className="w-full h-full bg-blackish text-center p-2 rounded-tl-full rounded-br-full shadow-custom drop-shadow-custom">
-              Data
+              Date
             </div>
             <div className="w-full h-full bg-blackish text-center p-2 rounded-tl-full rounded-br-full shadow-custom drop-shadow-custom">
               Severity
@@ -149,7 +156,7 @@ export default function HostelDashboard() {
                         <div className="custom-scrollbar w-3/5 flex items-center justify-center basis-3/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center">
                           {patient.room}
                         </div>
-                        <div className={`custom-scrollbar w-3/5 flex items-center justify-center basis-3/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center ${(patient.status==="Yes")?"text-red-700":"text-green-700"}`}>
+                        <div className={`custom-scrollbar w-3/5 flex items-center justify-center basis-3/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center ${(patient.status==="yes")?"text-red-700":"text-green-700"}`}>
                           {patient.status}
                         </div>
                         <div className="custom-scrollbar flex justify-center items-center w-3/5 basis-3/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center">

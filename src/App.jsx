@@ -11,9 +11,9 @@ import DoctorDashboard from "./_root/doctor/pages/DoctorDashboard.jsx";
 import AddPrescription from "./_root/doctor/pages/AddPrescription.jsx";
 import PrescriptionDetailsPage from "./_root/student/pages/PrescriptionDetailsPage.jsx";
 import ViewPrescription from "./_root/doctor/pages/ViewPrescription.jsx";
-import HostelDashboard from "./_root/hostel_office/HostelDashboard.jsx";
-import Emergency from "./_root/hostel_office/Emergency.jsx";
-import Analytics from "./_root/hostel_office/Analytics.jsx";
+import HostelDashboard from "./_root/hostel_office/page/HostelDashboard.jsx";
+import Emergency from "./_root/hostel_office/page/Emergency.jsx";
+import Analytics from "./_root/hostel_office/page/Analytics.jsx";
 import Pdf from "./Pdf.jsx";
 
 import Prescriptions from "./_root/doctor/pages/Prescriptions.jsx";
@@ -54,6 +54,7 @@ export default function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/analytics" element={<Analytics />} />
       <Route path="/pdf" element={<Pdf />} />
+      <Route path="/dashboard" element={<Emergency />} />
     </Routes>
   );
 }

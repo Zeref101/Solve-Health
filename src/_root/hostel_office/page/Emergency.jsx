@@ -1,60 +1,19 @@
-import React, { useState } from "react";
-import WardenSidebar from "../../hostel_components/WardenSideBar";
+import React, { useEffect, useState } from "react";
+import WardenSidebar from "../../../hostel_components/WardenSideBar";
+import axios from "axios";
+import { URL_ORIGIN } from "../../../constant";
 export default function Emergency() {
-    const diseases = [
-        "Tuberculosis",
-        "Chickenpox",
-        "Measles",
-        "Mumps",
-        "Rubella",
-        "Conjuctivitis",
-        "Dengue",
-        "Ebola virus disease ",
-        "COVID-19",
-        "Influenza"
-      ];
-      const care = [
-        "Typhoid",
-        "Chickenpox",
-        "Measles",
-        "Mumps",
-        "Rubella",
-        "Malaria",
-        "Dengue",
-        "Fever",
-        "COVID-19",
-        "Influenza"
-      ];
   const [selected, setSelected] = useState("A block");
   const [patients, setPatients] = useState([
-    {
-      name: "John Doe",
-      room: "A-101",
-      isolation: "Yes",
-      disease: "Dengue",
-      food: "No",
-      phone: "1234567890",
-      pres: "",
-    },
-    {
-      name: "John Doe",
-      room: "A-101",
-      isolation: "Yes",
-      disease: "Fever",
-      food: "No",
-      phone: "1234567890",
-      pres: "",
-    },
-    {
-      name: "John Doe",
-      room: "A-101",
-      isolation: "Yes",
-      disease: "Fever",
-      food: "No",
-      phone: "1234567890",
-      pres: "",
-    },
   ]);
+  useEffect(()=>{
+    function fetch(){
+      axios.get(`${URL_ORIGIN}/health_center/getEmergency/`).then((res)=>{
+        setPatients(res.data);
+      })
+    }
+    fetch()
+  },[])
   console.log(patients);
   return (
     <div className="min-h-screen bg-backgroundColor w-full text-white flex gap-10">
@@ -123,21 +82,21 @@ export default function Emergency() {
                         </div>
                         <div
                           className={`custom-scrollbar w-3/5 flex items-center justify-center basis-2/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center ${
-                            diseases.includes(patient.disease) === true
+                            patient.isolation === true
                               ? "text-red-700"
                               : "text-green-700"
                           }`}
                         >
-                          {(diseases.includes(patient.disease) === true)?"Yes":"No"}
+                          {(patient.isolation)?"Yes":"No"}
                         </div>
                         <div
                           className={`custom-scrollbar w-3/5 flex items-center justify-center basis-1/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center ${
-                            care.includes(patient.disease) === true
+                            patient.food=== true
                               ? "text-red-700"
                               : "text-green-700"
                           }`}
                         >
-                          {(care.includes(patient.disease) === true)?"Yes":"No"}
+                          {(patient.food === true)?"Yes":"No"}
                         </div>
                         <div className="custom-scrollbar w-3/5 flex items-center justify-center basis-2/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center">
                           {patient.phone}

@@ -1,4 +1,4 @@
-import WardenSidebar from "../../hostel_components/WardenSideBar";
+import WardenSidebar from "../../../hostel_components/WardenSideBar";
 import { Line, Pie } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 
