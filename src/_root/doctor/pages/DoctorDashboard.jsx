@@ -1,29 +1,35 @@
 import { useEffect, useState } from "react";
-import DoctorSidebar from "../../doctor_components/DoctorSidebar";
+import DoctorSidebar from "../../../doctor_components/DoctorSidebar";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { quote, shifts, times } from "../../constant";
-import minus from "../../assets/minus 1.png";
+import { quote, shifts, times } from "../../../constant";
+import minus from "../../../assets/minus 1.png";
+import { getToday } from "../../../util";
 
 export default function DoctorDashboard() {
   const [percentage, setPercentage] = useState(0);
   const [value, setValue] = useState(0);
   const [count, setCount] = useState(15);
   const [time, setTime] = useState(100);
+  const todayDate = getToday();
 
-//   ISSUE FIXX KR SAALE
+  const shiftDuration = 4 * 60 * 60;
+  const [timeLeft, setTimeLeft] = useState(shiftDuration);
 
-//   const timer = setInterval(()=>{
-//     if(time === 0){
-//         clearInterval(timer);
-//     }else{
-//         setTime(time-1);
-//         console.log(time);
-//     }
-// }, 1000)
   useEffect(() => {
-    setPercentage(100);
-  }, [count]);
+    const timer = setInterval(() => {
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+      } else {
+        setTimeLeft(timeLeft - 1);
+        const newValue = ((shiftDuration - timeLeft) / shiftDuration) * 100;
+        setValue(newValue.toFixed(2)); // limit to two decimal places
+      }
+    }, 1000);
+
+    // Cleanup function to clear the interval when the component unmounts
+    return () => clearInterval(timer);
+  }, [timeLeft]);
   return (
     <div className="min-h-screen bg-backgroundColor w-full text-white flex gap-10">
       <DoctorSidebar></DoctorSidebar>
@@ -44,12 +50,7 @@ export default function DoctorDashboard() {
           <div className="bg-dark basis-5/12 rounded-2xl w-full p-6 gap-6 flex flex-col">
             <div className="header flex justify-between items-center">
               <div className="text-xl font-bold">Prescriptions</div>
-              <div>
-                <img
-                  src="https://s3-alpha-sig.figma.com/img/bbc1/a70f/8b9a2573f89f39f99d7dfeec7594f1ba?Expires=1713744000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ZPCAFP5tC8GQtEAwUUGTny8OzKHKrL7DdFtGgwrYbZN5YjtLZE2Zu4n~Exiqa892Gf-TAyc3AqnMEaoB~HywklirPEYkNGpLQtIAiKig8R5McbPR6Jcm~GVGCaYap2r2McqvzVli3MWNNiqPUXv8Tixo3ofoPlH83xMwfuOp38fETWb2VfK4FYy6xH0brT-v98zLNW1Zr-WHzl2ZS0KUJSpKJZ4uk-l6WOYpdETw-F2YWCYw9e3T5UYQmO4wO8gnVKLf~trpc6kVfKpPXshQ0dFrcIPsrSBeTnDqGhST~2lVo4x7Np9BGu91uFVkY9J8~Lc7TYXJ3VyGVKzOME9G3g__"
-                  alt=""
-                />
-              </div>
+              <div></div>
               <div>
                 <img
                   src="https://s3-alpha-sig.figma.com/img/bbc1/a70f/8b9a2573f89f39f99d7dfeec7594f1ba?Expires=1713744000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ZPCAFP5tC8GQtEAwUUGTny8OzKHKrL7DdFtGgwrYbZN5YjtLZE2Zu4n~Exiqa892Gf-TAyc3AqnMEaoB~HywklirPEYkNGpLQtIAiKig8R5McbPR6Jcm~GVGCaYap2r2McqvzVli3MWNNiqPUXv8Tixo3ofoPlH83xMwfuOp38fETWb2VfK4FYy6xH0brT-v98zLNW1Zr-WHzl2ZS0KUJSpKJZ4uk-l6WOYpdETw-F2YWCYw9e3T5UYQmO4wO8gnVKLf~trpc6kVfKpPXshQ0dFrcIPsrSBeTnDqGhST~2lVo4x7Np9BGu91uFVkY9J8~Lc7TYXJ3VyGVKzOME9G3g__"
@@ -110,9 +111,6 @@ export default function DoctorDashboard() {
             <div className="compare text-gray-500 self-center">
               +2 this week
             </div>
-            <div className="compare text-gray-500 self-center">
-              +2 this week
-            </div>
           </div>
           <div className="bg-quote bg-top bg-cover bg-gray-400 bg-no-repeat basis-7/12 rounded-2xl w-full ">
             <div className="w-full h-full bg-black bg-opacity-50 p-6 gap-3 flex">
@@ -135,18 +133,30 @@ export default function DoctorDashboard() {
           <div className="main h-full w-full flex">
             <div className="left basis-1/2">
               <div className="flex h-full gap-6">
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-4">
                   {shifts.map((day) => {
                     return (
-                      <div className="text-xl font-bold rounded-2xl">{day}</div>
+                      <div
+                        className={`text-xl font-bold rounded-2xl ${
+                          todayDate === day ? " text-aquaMarine" : ""
+                        }`}
+                        key={day}
+                      >
+                        {day}
+                      </div>
                     );
                   })}
                 </div>
-                <div className=""><img className="h-full" src={minus} alt="" /></div>
-                <div className="flex flex-col">
-                  {times.map((time) => {
+                <div className="">
+                  <img className="h-[20rem]" src={minus} alt="dandi" />
+                </div>
+                <div className="flex flex-col gap-4">
+                  {times.map((time, index) => {
                     return (
-                      <div className="text-xl font-bold rounded-2xl">
+                      <div
+                        className="text-xl font-bold rounded-2xl"
+                        key={index}
+                      >
                         {time}
                       </div>
                     );
@@ -200,7 +210,6 @@ export default function DoctorDashboard() {
                   // Customize background - only used when the `background` prop is true
                   background: {
                     fill: "#41515B",
-                    
                   },
                 }}
               />

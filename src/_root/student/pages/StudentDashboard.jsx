@@ -26,8 +26,10 @@ export default function StudentDashboard() {
       <div className="py-4 min-h-screen bg-backgroundColor w-full text-white flex flex-col gap-4">
         <div className="flex justify-between items-center p-4">
           <div className="logo flex flex-col justify-center items-center">
-            <h1 className=" self-start">Hello,</h1>
-            <h1>{details ? details.name : ""}</h1>
+            <h1 className=" self-start font-normal text-[18px]">Hello,</h1>
+            <h1 className=" font-semibold text-[20px]">
+              {details ? details.name : ""}
+            </h1>
           </div>
           <div className="icon">
             <div className="bg-black border-2 border-gray-300 rounded-full w-14 h-14 justify-center items-center"></div>

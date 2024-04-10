@@ -1,7 +1,8 @@
+import { NavLink } from "react-router-dom";
 import { dashboardInformation } from "../constant";
 const DoctorSidebar = () => {
   return (
-    <nav className=" bg-riverBed max-w-[350px] h-screen rounded-r-lg flex flex-col items-center justify-start pt-20">
+    <nav className=" bg-riverBed w-[450px] h-screen rounded-r-lg flex flex-col items-center justify-start pt-20 ">
       <div className="flex items-start justify-center flex-col">
         <div className="flex flex-col items-center justify-center w-full">
           <div className="flex items-center justify-center">
@@ -19,14 +20,15 @@ const DoctorSidebar = () => {
           </div>
         </div>
         <img
-          src="src/assets/divider.png"
+          src="/src/assets/divider.png"
           alt="divider"
-          className=" w-[17rem] pt-4"
+          className=" w-[80%] pl-8 pt-4"
         />
         <div className=" flex flex-col justify-center items-center gap-4 pt-4">
           {dashboardInformation.map((item) => {
             return (
-              <div
+              <NavLink
+                to={item.route}
                 className=" flex gap-2.5 items-center justify-start w-[15rem] p-4"
                 key={item.label}
               >
@@ -34,18 +36,18 @@ const DoctorSidebar = () => {
                 <span className=" text-dashboardText text-[18px]">
                   {item.label}
                 </span>
-              </div>
+              </NavLink>
             );
           })}
         </div>
         <img
-          src="src/assets/divider.png"
+          src="/src/assets/divider.png"
           alt="divider"
-          className=" w-[17rem] pt-32"
+          className=" w-[80%] pl-8 pt-32"
         />
         <div className=" flex gap-2.5 pt-[4rem] p-4">
           <img
-            src="src/assets/user-logout2.png"
+            src="/src/assets/user-logout2.png"
             alt="logout"
             className="w-[25px]"
           />

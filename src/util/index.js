@@ -14,3 +14,18 @@ export function getFieldFromDetails(field) {
         return null;
     }
 }
+export function getToday() {
+    const date = new Date();
+    const day = date.getDay();
+    const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    return {
+        date: date.toLocaleDateString(), // returns date in the format MM/DD/YYYY
+        weekday: weekdays[day] // returns the day of the week
+    };
+}
+
+// Usage:
+const today = getToday();
+console.log(today.date); // prints today's date
+console.log(today.weekday); // prints the day of the week

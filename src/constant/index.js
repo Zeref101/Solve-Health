@@ -1,19 +1,19 @@
 export const dashboardInformation = [
     {
-        imgUrl: "src/assets/home2.png",
-        label: "Home"
+        imgUrl: "/src/assets/home2.png",
+        label: "Home",
+        route: '/doctor/dashboard'
+    },
+
+    {
+        imgUrl: "/src/assets/prescription1.png",
+        label: "Prescriptions",
+        route: '/doctor/prescription'
     },
     {
-        imgUrl: "src/assets/task1.png",
-        label: "Tasks"
-    },
-    {
-        imgUrl: "src/assets/prescription1.png",
-        label: "Prescriptions"
-    },
-    {
-        imgUrl: "src/assets/setting2.png",
-        label: "Settings"
+        imgUrl: "/src/assets/add.png",
+        label: "Add prescription",
+        route: '/doctor/add-prescription'
     }
 ]
 

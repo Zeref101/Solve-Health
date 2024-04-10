@@ -7,24 +7,26 @@ import DoctorLayout from "./_root/doctor/DoctorLayout";
 import StudentLayout from "./_root/student/StudentLayout";
 import HostelOfficeLayout from "./_root/hostel_office/HostelOfficeLayout";
 import Login from "./_auth/Login.jsx";
-import DoctorDashboard from "./_root/doctor/DoctorDashboard.jsx";
-import AddPrescription from "./_root/doctor/AddPrescription.jsx";
+import DoctorDashboard from "./_root/doctor/pages/DoctorDashboard.jsx";
+import AddPrescription from "./_root/doctor/pages/AddPrescription.jsx";
 import PrescriptionDetailsPage from "./_root/student/pages/PrescriptionDetailsPage.jsx";
-import ViewPrescription from "./_root/doctor/ViewPrescription.jsx";
+import ViewPrescription from "./_root/doctor/pages/ViewPrescription.jsx";
 import HostelDashboard from "./_root/hostel_office/HostelDashboard.jsx";
 import Emergency from "./_root/hostel_office/Emergency.jsx";
 import Analytics from "./_root/hostel_office/Analytics.jsx";
+import Prescriptions from "./_root/doctor/pages/Prescriptions.jsx";
 
 export default function App() {
   return (
     <Routes>
       <Route element={<DoctorLayout />}>
-        <Route path="/doctor/dashbard" element={<DoctorDashboard />} />
+        <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
         <Route path="/doctor/add-prescription" element={<AddPrescription />} />
         <Route
           path="/doctor/view-prescription"
           element={<ViewPrescription />}
         />
+        <Route path="/doctor/prescription" element={<Prescriptions />} />
       </Route>
       <Route element={<StudentLayout />}>
         <Route path="/student/dashboard" element={<StudentDashboard />} />
