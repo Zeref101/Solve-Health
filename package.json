@@ -16,6 +16,7 @@
     "@capacitor/core": "^5.7.4",
     "axios": "^1.6.8",
     "chart.js": "^4.4.2",
+    "html2pdf.js": "^0.10.1",
     "https-localhost": "^4.7.1",
     "js-cookie": "^3.0.5",
     "react": "^18.2.0",
