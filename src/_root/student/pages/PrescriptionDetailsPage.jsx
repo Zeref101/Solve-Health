@@ -19,11 +19,11 @@ const PrescriptionDetailsPage = () => {
         <div className="font-extrabold">Doctor's Details</div>
         <div className="flex flex-col justify-center items-center">
           <div className=" w-[80px] h-[80px] rounded-full bg-black mt-4">
-            {/* image */}
+            <img src="/src/assets/doctor-male-2.png" alt="" />
           </div>
           <div className="flex flex-col justify-center items-center mt-2">
             <span className="font-bold">Dr. Om Aditya</span>
-            <span className="font-normal">Nothing Special</span>
+            <span className="font-normal">Dentist</span>
           </div>
         </div>
       </div>
@@ -40,8 +40,8 @@ const PrescriptionDetailsPage = () => {
       <div className=" bg-[#172935] flex flex-col w-[80%] px-4 h-auto py-4 rounded-[15px] prescriptionDetail">
         <div className="font-extrabold">Prescription given</div>
         <div className="flex flex-col justify-center items-start font-semibold mt-4">
-          <span>• Augmentin 625 x 2 tabs. </span>
-          <span>• Augmentin 625 x 2 tabs. </span>
+          <span>• Paracetamol</span>
+          <span>• Dolo650</span>
           <span>• Augmentin 625 x 2 tabs. </span>
         </div>
       </div>
