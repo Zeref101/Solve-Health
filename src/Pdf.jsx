@@ -1,8 +1,16 @@
 import html2pdf from "html2pdf.js";
+import { URL_ORIGIN } from "./constant";
+import { useState } from "react";
+import axios from "axios";
+import { useUserContext } from "./context/AuthenticationProvider";
 
 const Pdf = () => {
+  const { prescription1 } = useUserContext();
+  console.log(prescription1);
+
   function convertToPdf() {
     const input = document.getElementById("convert");
+    const [pdf, setPdf] = useState("");
     html2pdf(input);
     html2pdf(input, {
       // margin: 10,
@@ -16,18 +24,14 @@ const Pdf = () => {
         formData.append("pdf", blob, "prescription.pdf");
 
         // Send the blob to the backend
-        fetch("your-backend-url", {
-          method: "POST",
-          body: formData,
-        })
+        axios
+          .post(`${URL_ORIGIN}/upload/`, formData)
           .then((response) => {
-            if (response.ok) {
-              console.log("PDF sent to backend successfully");
-            } else {
-              console.error("Failed to send PDF to backend");
-            }
+            console.log(response);
+            console.log("PDF sent to backend successfully");
           })
           .catch((error) => {
+            console.error("Failed to send PDF to backend");
             console.error("Error sending PDF to backend:", error);
           });
       });

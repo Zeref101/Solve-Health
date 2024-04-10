@@ -10,6 +10,7 @@ const AuthenticationProvider = ({ children }) => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [details, setDetails] = useState(null);
+  const [prescription1, setPrescription1] = useState(null);
 
   useEffect(() => {
     const storedDetails = localStorage.getItem("details");
@@ -44,7 +45,14 @@ const AuthenticationProvider = ({ children }) => {
 
   return (
     <AuthenticationContext.Provider
-      value={{ isAuthenticated, setIsAuthenticated, details, setDetails }}
+      value={{
+        isAuthenticated,
+        setIsAuthenticated,
+        details,
+        setDetails,
+        setPrescription1,
+        prescription1,
+      }}
     >
       {children}
     </AuthenticationContext.Provider>

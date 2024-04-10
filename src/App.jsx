@@ -15,6 +15,7 @@ import HostelDashboard from "./_root/hostel_office/HostelDashboard.jsx";
 import Emergency from "./_root/hostel_office/Emergency.jsx";
 import Analytics from "./_root/hostel_office/Analytics.jsx";
 import Pdf from "./Pdf.jsx";
+
 import Prescriptions from "./_root/doctor/pages/Prescriptions.jsx";
 
 export default function App() {
@@ -51,6 +52,7 @@ export default function App() {
         <Route path="/hostel/emergency" element={<Emergency />} />
       </Route>
       <Route path="/login" element={<Login />} />
+      <Route path="/analytics" element={<Analytics />} />
       <Route path="/pdf" element={<Pdf />} />
     </Routes>
   );

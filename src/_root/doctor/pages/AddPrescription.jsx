@@ -1,11 +1,17 @@
 import { useState } from "react";
 import DoctorSidebar from "../../../doctor_components/DoctorSidebar";
-import ReactSlider from "react-slider";
-import { Slider, RangeSlider } from "rsuite";
+import { Slider } from "rsuite";
 import "rsuite/Slider/styles/index.css";
 import "rsuite/RangeSlider/styles/index.css";
+import axios from "axios";
+import { URL_ORIGIN } from "../../../constant";
+// import Pdf from "../../../Pdf";
+// import { useUserContext } from "../../../context/AuthenticationProvider";
+// import { useNavigate } from "react-router-dom";
 
 export default function AddPrescription() {
+  // const { setPrescription1 } = useUserContext();
+  // const navigate = useNavigate();
   const [hospitalization, setHospitalization] = useState(false);
   const [medicines, setMedicines] = useState([
     {
@@ -29,31 +35,46 @@ export default function AddPrescription() {
   ]);
   const [prescription, setPrescription] = useState({
     name: "",
-    age: "",
     block: "",
     room: "",
     disease: "",
     date: "",
+    reg_num: "",
     severity: 50,
     medicines: medicines,
+    hospitalization: false,
   });
   function handleSubmit(e) {
+    e.preventDefault();
+
     setPrescription({
       ...prescription,
       medicines: medicines,
+      hospitalization: hospitalization,
     });
-    e.preventDefault();
-    console.log(prescription, medicines);
+
+    // Send a POST request to /doctor/save-prescription with the prescription data
+    axios
+      .post(`${URL_ORIGIN}/doctor/save-prescription`, prescription)
+      .then((response) => {
+        console.log(response.data);
+        // setPrescription1(prescription);
+        // navigate("/Pdf");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     setPrescription({
       name: "",
-      age: "",
       block: "",
       room: "",
       disease: "",
+      reg_num: "",
       date: "",
       severity: 50,
       medicines: medicines,
+      hospitalization: false,
     });
   }
   return (
@@ -105,6 +126,23 @@ export default function AddPrescription() {
                       setPrescription({
                         ...prescription,
                         block: e.target.value,
+                      });
+                      prescription;
+                    }}
+                    className="w-full basis-1/2 bg-backgroundColor rounded-3xl p-2"
+                    type="text"
+                  ></input>
+                </div>
+                <div className="flex">
+                  <div className="basis-1/2 w-full text-center">
+                    Registration Number :{" "}
+                  </div>
+                  <input
+                    value={prescription.reg_num}
+                    onChange={(e) => {
+                      setPrescription({
+                        ...prescription,
+                        reg_num: e.target.value,
                       });
                       prescription;
                     }}
@@ -189,6 +227,10 @@ export default function AddPrescription() {
                       value={true}
                       onChange={(e) => {
                         setHospitalization(e.target.value);
+                        setPrescription({
+                          ...prescription,
+                          hospitalization: true,
+                        });
                       }}
                       id="yes"
                       type="radio"
@@ -204,6 +246,10 @@ export default function AddPrescription() {
                       value={false}
                       onChange={(e) => {
                         setHospitalization(e.target.value);
+                        setPrescription({
+                          ...prescription,
+                          hospitalization: false,
+                        });
                       }}
                       id="no"
                       type="radio"
