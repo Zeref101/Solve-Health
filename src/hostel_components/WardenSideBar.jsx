@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { wardenInformation } from "../constant";
 const WardenSidebar = () => {
   return (
@@ -26,7 +27,8 @@ const WardenSidebar = () => {
         <div className=" flex flex-col justify-center items-center gap-4 pt-4">
           {wardenInformation.map((item) => {
             return (
-              <div
+              <NavLink
+                to={item.routeTo}
                 className=" flex gap-2.5 items-center justify-start w-[15rem] p-4"
                 key={item.label}
               >
@@ -34,7 +36,7 @@ const WardenSidebar = () => {
                 <span className=" text-dashboardText text-[18px]">
                   {item.label}
                 </span>
-              </div>
+              </NavLink>
             );
           })}
         </div>

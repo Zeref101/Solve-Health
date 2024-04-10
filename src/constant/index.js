@@ -20,15 +20,18 @@ export const dashboardInformation = [
 export const wardenInformation = [
     {
         imgUrl: "/src/assets/home2.png",
-        label: "Home"
+        label: "Home",
+        routeTo: "/hostel/dashboard"
     },
     {
         imgUrl: "/src/assets/prescription1.png",
-        label: "Emergency"
+        label: "Emergency",
+        routeTo: "/hostel/emergency"
     },
     {
         imgUrl: "/src/assets/analytics.png",
-        label: "Analytics"
+        label: "Analytics",
+        routeTo: "/analytics"
     }
 ]
 
