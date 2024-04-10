@@ -1,4 +1,3 @@
-import React from "react";
 import WardenSidebar from "../../hostel_components/WardenSideBar";
 import { Line, Pie } from "react-chartjs-2";
 import Chart from "chart.js/auto";
@@ -114,14 +113,6 @@ export default function Analytics() {
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-export function App() {
-  return (
-    <div className="App">
-      <Line data={data} />
     </div>
   );
 }

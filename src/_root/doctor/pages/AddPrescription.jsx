@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import DoctorSidebar from "../../doctor_components/DoctorSidebar";
+import { useState } from "react";
+import DoctorSidebar from "../../../doctor_components/DoctorSidebar";
 import ReactSlider from "react-slider";
 import { Slider, RangeSlider } from "rsuite";
 import "rsuite/Slider/styles/index.css";
@@ -318,8 +318,16 @@ export default function AddPrescription() {
               </div>
             </div>
             <div className="remarks flex justify-between w-full items-center gap-4">
-              <div className="whitespace-nowrap text-2xl font-extrabold">Additional Remarks :</div>
-              <textarea className="bg-backgroundColor rounded-3xl p-2 w-full" name="" id="" cols="30" rows="2"></textarea>
+              <div className="whitespace-nowrap text-2xl font-extrabold">
+                Additional Remarks :
+              </div>
+              <textarea
+                className="bg-backgroundColor rounded-3xl p-2 w-full"
+                name=""
+                id=""
+                cols="30"
+                rows="2"
+              ></textarea>
             </div>
           </div>
         </div>
