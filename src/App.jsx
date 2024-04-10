@@ -13,6 +13,7 @@ import PrescriptionDetailsPage from "./_root/student/pages/PrescriptionDetailsPa
 import ViewPrescription from "./_root/doctor/ViewPrescription.jsx";
 import HostelDashboard from "./_root/hostel_office/HostelDashboard.jsx";
 import Emergency from "./_root/hostel_office/Emergency.jsx";
+import Analytics from "./_root/hostel_office/Analytics.jsx";
 
 export default function App() {
   return (
@@ -44,9 +45,10 @@ export default function App() {
       </Route>
       <Route element={<HostelOfficeLayout />}>
         <Route path="/hostel/dashboard" element={<HostelDashboard />} />
+        <Route path="/hostel/emergency" element={<Emergency />} />
       </Route>
       <Route path="/login" element={<Login />} />
-      <Route path="/emergency" element={<Emergency />} />
+      <Route path="/analytics" element={<Analytics />} />
     </Routes>
   );
 }

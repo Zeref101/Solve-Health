@@ -6,8 +6,8 @@ import AuthenticationProvider from "./context/AuthenticationProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <AuthenticationProvider>
+    {/* <AuthenticationProvider> */}
       <App />
-    </AuthenticationProvider>
+    {/* </AuthenticationProvider> */}
   </BrowserRouter>
 );
