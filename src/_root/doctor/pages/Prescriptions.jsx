@@ -9,9 +9,12 @@ export default function Prescriptions() {
   const [patients, setPatients] = useState([]);
 
   useEffect(() => {
-    fetch(`${URL_ORIGIN}/getPatients`)
+    fetch(`${URL_ORIGIN}/health_center/getPatients`)
       .then((response) => response.json())
-      .then((data) => setPatients(data))
+      .then((data) => {
+        setPatients(data);
+        console.log(data);
+      })
       .catch((error) => console.error("Error:", error));
   }, []);
 

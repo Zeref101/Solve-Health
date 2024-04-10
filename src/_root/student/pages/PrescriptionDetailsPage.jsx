@@ -1,19 +1,21 @@
 import { useParams } from "react-router-dom";
+import { useUserContext } from "../../../context/AuthenticationProvider";
 
 const PrescriptionDetailsPage = () => {
   const { prescriptionId } = useParams();
+  const { details } = useUserContext();
 
   return (
     <div className="py-4 min-h-screen bg-backgroundColor w-full text-white flex flex-col gap-4 items-center">
       <div className="flex justify-between items-center w-full pb-8 px-2.5 bg-[#0A171E] prescriptionDetail">
         <span className="text-white text-[24px]">Prescription Detail</span>
-        <button>
+        <a href={details.prescription[0]} download>
           <img
             src="/src/assets/downloadButton.png"
             alt="downloadButton"
             className="w-[35px] h-[35px] rounded-full"
           />
-        </button>
+        </a>
       </div>
       <div className=" bg-[#172935] flex flex-col w-[80%] px-4 h-auto py-4 rounded-[15px] prescriptionDetail">
         <div className="font-extrabold">Doctor's Details</div>

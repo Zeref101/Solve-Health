@@ -15,7 +15,7 @@ const DoctorSidebar = () => {
           <div className="flex flex-col gap-1 justify-center items-center text-[19px]">
             <span className="text-offwhite font-bold">Dr.Om Aditya</span>
             <span className=" text-offwhite font-normal text-[14px]">
-              Nothing Special
+              Dentist
             </span>
           </div>
         </div>

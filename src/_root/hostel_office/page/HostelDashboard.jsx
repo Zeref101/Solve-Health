@@ -4,26 +4,31 @@ import axios from "axios";
 import { URL_ORIGIN } from "../../../constant";
 export default function HostelDashboard() {
   const [selected, setSelected] = useState("A block");
-  const [patients, setPatients] = useState([
-  ]);
-  useEffect(()=>{
-    function fetchData(){
-      axios.get(`${URL_ORIGIN}/health_center/getByBlock/?block=A`).then((res)=>{
-        setPatients(res.data);
-      })
+  const [patients, setPatients] = useState([]);
+  useEffect(() => {
+    function fetchData() {
+      axios
+        .get(`${URL_ORIGIN}/health_center/getByBlock/?block=A`)
+        .then((res) => {
+          setPatients(res.data);
+        });
     }
     fetchData();
-  },[])
+  }, []);
 
-  function fetchByBlock(block){
-    axios.get(`${URL_ORIGIN}/health_center/getByBlock/?block=${block}`).then((res)=>{
-      setPatients(res.data);
-    })
+  function fetchByBlock(block) {
+    axios
+      .get(`${URL_ORIGIN}/health_center/getByBlock/?block=${block}`)
+      .then((res) => {
+        setPatients(res.data);
+      });
   }
-  function fetchByStatus(){
-    axios.get(`${URL_ORIGIN}/health_center/getByStatus/?status=yes`).then((res)=>{
-      setPatients(res.data);
-    })
+  function fetchByStatus() {
+    axios
+      .get(`${URL_ORIGIN}/health_center/getByStatus/?status=yes`)
+      .then((res) => {
+        setPatients(res.data);
+      });
   }
   console.log(patients);
   return (
@@ -51,7 +56,7 @@ export default function HostelDashboard() {
                 htmlFor=""
                 onClick={() => {
                   setSelected("A block");
-                  fetchByBlock("A")
+                  fetchByBlock("A");
                   console.log("hi");
                 }}
                 className={`w-full border-2 border-gray-700 text-center ${
@@ -66,7 +71,7 @@ export default function HostelDashboard() {
                 htmlFor=""
                 onClick={() => {
                   setSelected("B block");
-                  fetchByBlock("B")
+                  fetchByBlock("B");
                   console.log("hi");
                 }}
                 className={`w-full border-2 border-gray-700 text-center ${
@@ -81,7 +86,7 @@ export default function HostelDashboard() {
                 htmlFor=""
                 onClick={() => {
                   setSelected("C block");
-                  fetchByBlock("C")
+                  fetchByBlock("C");
                   console.log("hi");
                 }}
                 className={`w-full border-2 border-gray-700 text-center ${
@@ -96,7 +101,7 @@ export default function HostelDashboard() {
                 htmlFor=""
                 onClick={() => {
                   setSelected("D block");
-                  fetchByBlock("D")
+                  fetchByBlock("D");
                   console.log("hi");
                 }}
                 className={`w-full border-2 border-gray-700 text-center ${
@@ -113,7 +118,10 @@ export default function HostelDashboard() {
             Filter By
           </div>
           <div className="flex justify-between mx-48 gap-10 text-aquaMarine font-bold">
-            <div onClick={fetchByStatus} className="w-full h-full bg-blackish text-center p-2 rounded-tl-full rounded-br-full shadow-custom drop-shadow-custom">
+            <div
+              onClick={fetchByStatus}
+              className="w-full h-full bg-blackish text-center p-2 rounded-tl-full rounded-br-full shadow-custom drop-shadow-custom"
+            >
               Hospitalised
             </div>
             <div className="w-full h-full bg-blackish text-center p-2 rounded-tl-full rounded-br-full shadow-custom drop-shadow-custom">
@@ -146,7 +154,10 @@ export default function HostelDashboard() {
                 {patients &&
                   patients.map((patient, index) => {
                     return (
-                      <div className="flex w-full font-bold text-xl" key={index}>
+                      <div
+                        className="flex w-full font-bold text-xl"
+                        key={index}
+                      >
                         <div className="custom-scrollbar w-1/5 flex items-center justify-center basis-1/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center">
                           {index + 1}
                         </div>
@@ -156,16 +167,30 @@ export default function HostelDashboard() {
                         <div className="custom-scrollbar w-3/5 flex items-center justify-center basis-3/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center">
                           {patient.room}
                         </div>
-                        <div className={`custom-scrollbar w-3/5 flex items-center justify-center basis-3/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center ${(patient.status==="yes")?"text-red-700":"text-green-700"}`}>
+                        <div
+                          className={`custom-scrollbar w-3/5 flex items-center justify-center basis-3/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center ${
+                            patient.status === "yes"
+                              ? "text-red-700"
+                              : "text-green-700"
+                          }`}
+                        >
                           {patient.status}
                         </div>
                         <div className="custom-scrollbar flex justify-center items-center w-3/5 basis-3/12 border-2 border-l-0 overflow-hidden bg-backgroundColor border-aquaMarineB whitespace-nowrap py-4 text-center">
-                          <div className="relative text-2xl font-extrabold w-32 shadow-button">
-                            <button
-                              className="relative active:top-1 w-full h-full border-4 uppercase border-aquaMarine p-1 px-3 active:left-1"
-                            >
-                              PDF
-                            </button>
+                          <div className="relative text-2xl font-extrabold w-20 shadow-button">
+                            {patient.prescription_given &&
+                            patient.prescription_given[0] ? (
+                              <a
+                                href={patient.prescription_given[0]}
+                                download
+                                className="relative active:top-1 w-full h-full border-4 uppercase border-aquaMarine p-1 px-3 active:left-1"
+                              >
+                                PDF
+                              </a>
+                            ) : (
+                              // Render something else when prescription[0] is undefined
+                              <p>N/A</p>
+                            )}
                           </div>
                         </div>
                       </div>

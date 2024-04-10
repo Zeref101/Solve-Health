@@ -13,7 +13,7 @@ const WardenSidebar = () => {
             />
           </div>
           <div className="flex flex-col gap-1 justify-center items-center text-[19px]">
-            <span className="text-offwhite font-bold">Dr.Milind Srinivas</span>
+            <span className="text-offwhite font-bold">Dr. Om Aditya</span>
             <span className=" text-offwhite font-normal text-[14px]">
               Deputy Director
             </span>

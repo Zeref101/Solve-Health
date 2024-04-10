@@ -8,6 +8,7 @@ import { URL_ORIGIN } from "../../../constant";
 export default function StudentDashboard() {
   const details = JSON.parse(localStorage.getItem("details"));
   const [doctors, setDoctors] = useState([]);
+  console.log(details);
 
   useEffect(() => {
     axios
