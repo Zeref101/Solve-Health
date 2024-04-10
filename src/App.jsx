@@ -54,7 +54,7 @@ export default function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/analytics" element={<Analytics />} />
       <Route path="/pdf" element={<Pdf />} />
-      <Route path="/dashboard" element={<Emergency />} />
+      <Route path="/dashboard" element={<Ambulance />} />
     </Routes>
   );
 }
