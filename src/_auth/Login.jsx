@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { BallTriangle } from "react-loader-spinner";
 import { toast } from "react-toastify";
 import Select from "react-select";
 import axios from "axios";
 import { URL_ORIGIN } from "../constant";
 import { useUserContext } from "../context/AuthenticationProvider";
-import arrow from '../assets/arrow.png';
+import arrow from "../assets/arrow.png";
 
 const customStyles = {
   control: (provided) => ({
@@ -107,7 +107,7 @@ const Login = () => {
               type="text"
               id="email"
               placeholder="Email"
-              className="rounded-3xl bg-email bg-contain bg-left bg-no-repeat placeholder:left-10 placeholder:relative placeholder:text-white border placeholder:text-lg bg-backgroundColor border-gray-200 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-4 focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
+              className="rounded-3xl pl-12 bg-email bg-contain bg-left bg-no-repeat placeholder:left-2 placeholder:relative placeholder:text-white border placeholder:text-center placeholder:text-lg bg-backgroundColor border-gray-200 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-4 focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
               onChange={(e) => setEmail(e.target.value)} // Update this
             />
           </div>
@@ -116,7 +116,7 @@ const Login = () => {
               type="text"
               id="password"
               placeholder="Password"
-              className="rounded-3xl bg-pass bg-contain bg-left bg-no-repeat placeholder:left-10 placeholder:relative placeholder:text-white border placeholder:text-lg bg-backgroundColor border-gray-200 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-4 focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
+              className="rounded-3xl bg-pass pl-12 bg-contain bg-left bg-no-repeat placeholder:left-2 placeholder:relative placeholder:text-white border placeholder:text-lg placeholder:text-center bg-backgroundColor border-gray-200 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-4 focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
               onChange={(e) => setPassword(e.target.value)} // Update this
             />
           </div>
@@ -132,14 +132,26 @@ const Login = () => {
             </a>
           </div>
           <div className="header w-full h-full flex justify-center px-10">
-          <button type="submit" className="login flex justify-center gap-4 active:top-1 relative text-2xl font-extrabold px-4 rounded-3xl bg-backgroundColor text-black drop-shadow-custom w-full text-center"><img src={arrow} alt="" className="h-14 w-full px-14"/></button>
-        </div>
-          {/* <button
-            type="submit"
-            className="bg-[#7747ff] w-max m-auto px-6 py-2 rounded text-white text-sm font-normal"
-          >
-            { ? "Loading..." : "Submit"}
-          </button> */}
+            <button
+              type="submit"
+              className="login flex justify-center gap-4 active:top-1 relative text-2xl font-extrabold px-4 rounded-3xl bg-backgroundColor text-black drop-shadow-custom w-full text-center"
+            >
+              {loading ? (
+                <BallTriangle
+                  height="100%"
+                  width="50px"
+                  radius={5}
+                  color="#4fa94d"
+                  ariaLabel="ball-triangle-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
+              ) : (
+                <img src={arrow} alt="" className="h-14 w-full px-14" />
+              )}
+            </button>
+          </div>
         </form>
       </div>
     </div>
