@@ -1,6 +1,14 @@
 # V-HEALTH
 * Platform that streamlines the hostel medical system by centralizing information and automating processes, it saves time for all stakeholders while ensuring efficient coordination.
 
+<div style="overflow-x: auto; white-space: nowrap; display: flex; justify-content: center;">
+    <img src="/src/assets/stuDash.png" style="display: inline-block; width: auto; height: 350px;">
+    <img src="/src/assets/Ambulance.png" style="display: inline-block; width: auto; height: 350px;">
+    <img src="/src/assets/Hostel.png" style="display: inline-block; width: auto; height: 350px;">
+    <img src="/src/assets/DocAdd.png" style="display: inline-block; width: auto; height: 350px;">
+    <img src="/src/assets/analytics1.png" style="display: inline-block; width: auto; height: 350px;">
+</div>
+
 ### V-HEALTH solves the following problems:
 
 #### Lack of Tracking and Communication
