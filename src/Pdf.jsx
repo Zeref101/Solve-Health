@@ -5,12 +5,11 @@ import axios from "axios";
 import { useUserContext } from "./context/AuthenticationProvider";
 
 const Pdf = () => {
-  const { prescription1 } = useUserContext();
-  console.log(prescription1);
-
+  // const { prescription1 } = useUserContext();
+  // console.log(prescription1);
+  const [pdf, setPdf] = useState("");
   function convertToPdf() {
     const input = document.getElementById("convert");
-    const [pdf, setPdf] = useState("");
     html2pdf(input);
     html2pdf(input, {
       // margin: 10,

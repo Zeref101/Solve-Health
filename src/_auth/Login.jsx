@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { BallTriangle } from "react-loader-spinner";
 import { toast } from "react-toastify";
 import Select from "react-select";
 import axios from "axios";
 import { URL_ORIGIN } from "../constant";
 import { useUserContext } from "../context/AuthenticationProvider";
+import arrow from "../assets/arrow.png";
 
 const customStyles = {
   control: (provided) => ({
     ...provided,
-    backgroundColor: "#0A171E", // Tailwind's background color
+    backgroundColor: "#EEE", // Tailwind's background color
     color: "#FDF9F9", // Tailwind's text color
     borderRadius: "1rem", // Tailwind's rounded-lg
   }),
@@ -20,8 +21,8 @@ const customStyles = {
   }),
   option: (provided, state) => ({
     ...provided,
-    color: state.isSelected ? "#FDF9F9" : "#0A171E", // Tailwind's text color for dropdown menu options
-    backgroundColor: state.isSelected ? "#0A171E" : "#FDF9F9", // Tailwind's background color for dropdown menu options
+    color: state.isSelected ? "#080808" : "#0A171E", // Tailwind's text color for dropdown menu options
+    backgroundColor: state.isSelected ? "#EFEFEF" : "#FDF9F9", // Tailwind's background color for dropdown menu options
   }),
 };
 
@@ -95,48 +96,64 @@ const Login = () => {
   }, [selectedOption]);
 
   return (
-    <div className=" w-[20rem] mx-6 relative flex flex-col p-4 rounded-md mt-52  text-black bg-white">
-      <div className="text-2xl font-bold mb-2 text-[#1e0e4b] text-center">
-        Welcome back to <span className="text-[#7747ff]">App</span>
-      </div>
-      <div className="text-sm font-normal mb-4 text-center text-[#1e0e4b]">
-        Log in to your account
-      </div>
-      <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
-        <div className="block relative">
-          <input
-            type="text"
-            id="email"
-            className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
-            onChange={(e) => setEmail(e.target.value)} // Update this
+    <div className=" w-full h-full flex justify-center items-center">
+      <div className=" w-[20rem] mx-6 relative flex flex-col p-6 rounded-3xl mt-52 gap-10  text-black bg-riverBed">
+        <div className="header w-full h-full text-aquaMarine text-6xl font-extrabold flex justify-center">
+          <span className="drop-shadow-custom">LOGIN</span>
+        </div>
+        <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+          <div className="block relative">
+            <input
+              type="text"
+              id="email"
+              placeholder="Email"
+              className="rounded-3xl pl-12 bg-email bg-contain bg-left bg-no-repeat placeholder:left-2 placeholder:relative placeholder:text-white border placeholder:text-center placeholder:text-lg bg-backgroundColor border-gray-200 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-4 focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
+              onChange={(e) => setEmail(e.target.value)} // Update this
+            />
+          </div>
+          <div className="block relative">
+            <input
+              type="text"
+              id="password"
+              placeholder="Password"
+              className="rounded-3xl bg-pass pl-12 bg-contain bg-left bg-no-repeat placeholder:left-2 placeholder:relative placeholder:text-white border placeholder:text-lg placeholder:text-center bg-backgroundColor border-gray-200 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-4 focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
+              onChange={(e) => setPassword(e.target.value)} // Update this
+            />
+          </div>
+          <Select
+            defaultValue={selectedOption}
+            onChange={setSelectedOption}
+            options={options}
+            styles={customStyles}
           />
-        </div>
-        <div className="block relative">
-          <input
-            type="text"
-            id="password"
-            className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2 ring-gray-900 outline-0"
-            onChange={(e) => setPassword(e.target.value)} // Update this
-          />
-        </div>
-        <Select
-          defaultValue={selectedOption}
-          onChange={setSelectedOption}
-          options={options}
-          styles={customStyles}
-        />
-        <div>
-          <a className="text-sm text-[#7747ff]" href="#">
-            Forgot your password?
-          </a>
-        </div>
-        <button
-          type="submit"
-          className="bg-[#7747ff] w-max m-auto px-6 py-2 rounded text-white text-sm font-normal"
-        >
-          {loading ? "Loading..." : "Submit"}
-        </button>
-      </form>
+          <div className="mb-20 w-full flex justify-center">
+            <a className="text-lg text-aquaMarine drop-shadow-custom" href="#">
+              Forgot your password?
+            </a>
+          </div>
+          <div className="header w-full h-full flex justify-center px-10">
+            <button
+              type="submit"
+              className="login flex justify-center gap-4 active:top-1 relative text-2xl font-extrabold px-4 rounded-3xl bg-backgroundColor text-black drop-shadow-custom w-full text-center"
+            >
+              {loading ? (
+                <BallTriangle
+                  height="100%"
+                  width="50px"
+                  radius={5}
+                  color="#4fa94d"
+                  ariaLabel="ball-triangle-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
+              ) : (
+                <img src={arrow} alt="" className="h-14 w-full px-14" />
+              )}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

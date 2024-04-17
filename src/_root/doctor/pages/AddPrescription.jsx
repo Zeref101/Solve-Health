@@ -4,77 +4,67 @@ import { Slider } from "rsuite";
 import "rsuite/Slider/styles/index.css";
 import "rsuite/RangeSlider/styles/index.css";
 import axios from "axios";
-import { URL_ORIGIN } from "../../../constant";
+import { URL_ORIGIN, prescriptionPdf } from "../../../constant";
+import { useNavigate } from "react-router-dom";
 // import Pdf from "../../../Pdf";
 // import { useUserContext } from "../../../context/AuthenticationProvider";
 // import { useNavigate } from "react-router-dom";
 
 export default function AddPrescription() {
-  // const { setPrescription1 } = useUserContext();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [hospitalization, setHospitalization] = useState(false);
   const [medicines, setMedicines] = useState([
-    {
-      medicineName: "",
-      dosage: "",
-      unit: "",
-      remarks: "",
-    },
-    {
-      medicineName: "",
-      dosage: "",
-      unit: "",
-      remarks: "",
-    },
-    {
-      medicineName: "",
-      dosage: "",
-      unit: "",
-      remarks: "",
-    },
+    { medicineName: "", dosage: "", unit: "", remarks: "" },
+    { medicineName: "", dosage: "", unit: "", remarks: "" },
+    { medicineName: "", dosage: "", unit: "", remarks: "" },
   ]);
   const [prescription, setPrescription] = useState({
-    name: "",
-    block: "",
-    room: "",
-    disease: "",
-    date: "",
-    reg_num: "",
-    severity: 50,
+    name: "string",
+    block: "A",
+    room: 0,
+    disease: "string",
+    date: "2024-04-10",
+    status: "string",
     medicines: medicines,
-    hospitalization: false,
+    remarks: "",
+    reg_num: "string",
+    hospitalization: true,
+    severity: 0,
   });
-  function handleSubmit(e) {
+
+  async function handleSubmit(e) {
     e.preventDefault();
+    try {
+      const consolidatedData = {
+        ...prescription,
+        prescriptionPdf:
+          "https://firebasestorage.googleapis.com/v0/b/healthcare-5ac07.appspot.com/o/prescription%20(9).pdf?alt=media&token=7053ab00-e43f-43f1-b28b-2736822f2d11",
+      };
+
+      const response = await axios.post(
+        `${URL_ORIGIN}/health_center/doctor/save-prescription`,
+        consolidatedData
+      );
+
+      console.log("Combined response:", response.data);
+      // Your logic to handle after request
+    } catch (error) {
+      // Handle error
+      console.error("Error in combined request:", error);
+    }
 
     setPrescription({
-      ...prescription,
+      name: "string",
+      block: "A",
+      room: 0,
+      disease: "string",
+      date: "2024-04-10",
+      status: "string",
       medicines: medicines,
-      hospitalization: hospitalization,
-    });
-
-    // Send a POST request to /doctor/save-prescription with the prescription data
-    axios
-      .post(`${URL_ORIGIN}/doctor/save-prescription`, prescription)
-      .then((response) => {
-        console.log(response.data);
-        // setPrescription1(prescription);
-        // navigate("/Pdf");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-    setPrescription({
-      name: "",
-      block: "",
-      room: "",
-      disease: "",
-      reg_num: "",
-      date: "",
-      severity: 50,
-      medicines: medicines,
-      hospitalization: false,
+      remarks: "",
+      reg_num: "string",
+      hospitalization: true,
+      severity: 0,
     });
   }
   return (

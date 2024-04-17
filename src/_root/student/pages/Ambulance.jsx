@@ -1,8 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Ambulance() {
   const [checked, setChecked] = useState(false);
   const [issue, setIssue] = useState("");
+  const [timeLeft, setTimeLeft] = useState(600);
+
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+      } else {
+        setTimeLeft(timeLeft - 1);
+      }
+    }, 1000);
+
+    // Cleanup function to clear the interval when the component unmounts
+    return () => clearInterval(timer);
+  }, [timeLeft]);
   function handleCheck() {
     if (issue === "") {
       alert("Please enter your issue");
@@ -15,6 +30,17 @@ export default function Ambulance() {
       }
     }
   }
+    // Calculate hours
+    const hours = Math.floor(timeLeft / 3600);
+
+    // Calculate remaining seconds after subtracting hours
+    const remainingSeconds = timeLeft % 3600;
+  
+    // Calculate minutes
+    const minutes = Math.floor(remainingSeconds / 60);
+  
+    // Calculate remaining seconds
+    const seconds = remainingSeconds % 60;
   return (
     <div className="min-h-screen bg-backgroundColor w-full text-white flex gap-6 flex-col">
       <header className="w-full p-6">
@@ -60,21 +86,21 @@ export default function Ambulance() {
           }`}
         >
           <div className="h-14 w-14 rounded-3xl bg-aquaMarine flex justify-center items-center text-black text-2xl font-bold">
-            00
+            {hours}
           </div>
           <div className="h-14 flex flex-col justify-center items-center text-3xl gap-3 font-extrabold">
             <div className="flex justify-center items-center h-3 w-3 rounded-full bg-white"></div>
             <div className="flex justify-center items-center h-3 w-3 rounded-full bg-white"></div>
           </div>
           <div className="h-14 w-14 rounded-3xl bg-aquaMarine flex justify-center items-center text-black text-2xl font-bold">
-            01
+            {minutes}
           </div>
           <div className="h-14 flex flex-col justify-center items-center text-3xl gap-3 font-extrabold">
             <div className="flex justify-center items-center h-3 w-3 rounded-full bg-white"></div>
             <div className="flex justify-center items-center h-3 w-3 rounded-full bg-white"></div>
           </div>
           <div className="h-14 w-14 rounded-3xl bg-aquaMarine flex justify-center items-center text-black text-2xl font-bold">
-            03
+            {seconds}
           </div>
         </div>
       </div>
