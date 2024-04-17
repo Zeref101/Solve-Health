@@ -52,7 +52,7 @@ export default function App() {
         <Route path="/hostel/emergency" element={<Emergency />} />
       </Route>
       <Route path="/login" element={<Login />} />
-      <Route path="/analytics" element={<Analytics />} />
+      <Route path="/analytics" element={<Ambulance />} />
       <Route path="/pdf" element={<Pdf />} />
       <Route path="/dashboard" element={<Emergency />} />
     </Routes>
